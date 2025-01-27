@@ -12,14 +12,16 @@ const OtpScreen = ({ setTab }) => {
           <RxChevronLeft size={30} onClick={() => setTab("SMSAuth")} />
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-4 lg:mt-10">
         <div className="mb-8">
-          <h2 className=" font-semibold text-[30px]">SMS Authentication</h2>
-          <p className="text-[#6A6A6A] text-[18px]">
+          <h2 className=" font-semibold text-[18px] lg:text-[30px]">
+            SMS Authentication
+          </h2>
+          <p className="text-[#6A6A6A] text-sm text-[18px]">
             Verification - Enter the SMS code
           </p>
         </div>
-        <div className=" max-w-[80%]">
+        <div className="max-w-full  lg:max-w-[80%]">
           <div className="space-y-4 mb-5">
             <OtpInputBoxes otp={otp} setOtp={setOtp} />
           </div>
@@ -31,7 +33,7 @@ const OtpScreen = ({ setTab }) => {
             }
             handleClick={() => setTab("personalInfo")}
           />
-          <p className="text-[16px] text-center">
+          <p className="text-xs lg:text-[16px] text-center">
             Didn’t received a code?
             <span className="text-red-500 mx-2 font-bold">Resend Again</span>
           </p>

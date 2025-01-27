@@ -9,7 +9,7 @@ const SwipeToPayButton = () => {
             9.0$
           </div>
         </div>
-        <div className="absolute inset-y-0 right-24 flex items-center pl-3">
+        <div className="absolute inset-y-0 right-6 lg:right-24 flex items-center pl-3">
           <div className="text-white font-semibold">Swipe To Pay</div>
         </div>
       </div>

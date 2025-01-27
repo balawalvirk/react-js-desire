@@ -40,14 +40,14 @@ const Friends = () => {
                     onClose={() => console.log("Dropdown closed")}
                 />
             </div>
-            <div className="grid grid-cols-2 border-2 border-lightSecondary rounded-full py-3 mt-10 mb-8 font-semibold">
+            <div className="grid grid-cols-2 border-2 border-lightSecondary rounded-full py-2 lg:py-3 mt-10 mb-8 font-semibold">
                 <div className="flex justify-center cursor-pointer" onClick={() => navigate('/admin/friend-requests')}>
-                    <p>
+                    <p className="text-sm lg:text-normal">
                         Friend Requests <span className="text-primary">(3)</span>
                     </p>
                 </div>
                 <div className="flex justify-center cursor-pointer" onClick={() => navigate('/admin/request-sent')}>
-                    <p>
+                    <p className="text-sm lg:text-normal">
                         Request Sent <span className="text-primary">(4)</span>
                     </p>
                 </div>

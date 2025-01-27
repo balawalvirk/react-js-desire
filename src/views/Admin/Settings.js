@@ -53,19 +53,19 @@ const Settings = () => {
     return (
         <div className="p-3 lg:px-5">
             {renderItem()}
-            <div className="relative w-full h-52 bg-[#272829] rounded-2xl shadow-lg mb-24">
+            <div className="relative w-full h-36 lg:h-52 bg-[#272829] rounded-2xl shadow-lg mb-16 lg:mb-24">
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
                     <img
                         src={profile}
                         alt="Profile Image"
-                        className="size-40 rounded-full  shadow-xl object-cover t"
+                        className="size-28 lg:size-40 rounded-full  shadow-xl object-cover t"
                         loading="lazy"
                     />
                 </div>
             </div>
-            <div className="text-center mt-6">
-                <p className="text-xl font-bold text-center">Ethan Blake, 25</p>
-                <p className="text-secondary">2177 Marigold Lane, United States</p>
+            <div className="text-center mb-5 lg:mb-4 mt-4 lg:mt-6">
+                <p className="text-lg lg:text-xl font-bold text-center">Ethan Blake, 25</p>
+                <p className="text-sm lg:text-normaltext-secondary">2177 Marigold Lane, United States</p>
             </div>
             <div>
                 {settingTabs?.map((i, index) => {

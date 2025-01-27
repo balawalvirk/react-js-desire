@@ -14,10 +14,12 @@ const SmsAuth = ({ setTab }) => {
       </div>
       <div className="mt-10">
         <div className="mb-8">
-          <h2 className="text-[30px] font-semibold">SMS Authentication</h2>
-          <p className="text-[#6A6A6A] text-[18px]">Verification</p>
+          <h2 className="text-[18px] lg:text-[30px] font-semibold">
+            SMS Authentication
+          </h2>
+          <p className="text-[#6A6A6A] text-sm lg:text-[18px]">Verification</p>
         </div>
-        <div className=" max-w-[80%]">
+        <div className="max-w-full max-w-[80%]">
           <div className="space-y-4 mb-5">
             <PhoneInput
               defaultCountry="ua"

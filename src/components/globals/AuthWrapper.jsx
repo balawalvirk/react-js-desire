@@ -6,7 +6,7 @@ const AuthWrapper = ({ children }) => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   return (
-    <div className="grid grid-cols-2 h-screen">
+    <div className="grid lg:grid-cols-2 h-screen">
       {/* Left Column */}
       <div className="relative overflow-hidden">
         <img src={desires} className="h-full w-full object-cover" alt="" />

@@ -9,7 +9,7 @@ import SwipeToPayButton from "../../buttons/SwipeToPayButton";
 const DollarButton = ({ title, handleSelection, isSelected }) => {
   return (
     <div
-      className={`w-full mb-3 max-w-md p-4 border border-lightSecondary rounded-full cursor-pointer transition-colors duration-200 ${
+      className={`w-full mb-3 max-w-full lg:max-w-md p-2 lg:p-4 border border-lightSecondary rounded-full cursor-pointer transition-colors duration-200 ${
         isSelected ? "bg-[#272829] text-white" : "bg-white text-gray-500"
       }`}
       onClick={handleSelection}
@@ -25,7 +25,7 @@ const DollarButton = ({ title, handleSelection, isSelected }) => {
       <div className="flex items-center justify-between space-x-4">
         <div className="flex items-center space-x-3">
           <AiOutlineDollar className="size-6" />
-          <span className="text-sm">{title}</span>
+          <span className="text-xs lg:text-sm">{title}</span>
         </div>
         <div
           className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors duration-200 ${
@@ -59,9 +59,9 @@ const BuyCoinsModal = ({ isOpen, onClose }) => {
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
       <div>
         <div className="flex justify-between mb-6">
-          <div className="w-[80%] space-y-3">
-            <p className="text-xl font-bold">Buy Coins</p>
-            <p className="text-secondary text-sm">
+          <div className="w-full lg:w-[80%] space-y-2 lg:space-y-3">
+            <p className="text-lg lg:text-xl font-bold">Buy Coins</p>
+            <p className="text-secondary text-xs lg:text-sm">
               Buy Coin to boost your profile in your region
             </p>
           </div>

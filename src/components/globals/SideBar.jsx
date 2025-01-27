@@ -12,8 +12,8 @@ const SideBar = ({ routes, toggle, isOpen }) => {
 
   return (
     <div
-      className={`w-[300px] h-screen p-6 relative transition-all  bg-white shadow-2xl ${
-        isOpen ? "sidebar-show " : "sidebar-hidden"
+      className={`w-full md:w-[300px] h-screen p-6 z-10 md:z-0 absolute md:static transition-all  bg-white shadow-2xl ${
+        isOpen ? "left-0 " : "-left-[100%]"
       } `}
     >
       <div className="flex justify-between">

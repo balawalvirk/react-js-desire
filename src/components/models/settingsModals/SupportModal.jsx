@@ -7,10 +7,10 @@ const SupportModal = ({ isOpen, onClose }) => {
   return (
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
       <div>
-        <div className="flex justify-between mb-6">
-          <div className="w-[80%] space-y-3">
-            <p className="text-xl font-bold">Support</p>
-            <p className="text-secondary text-sm">
+        <div className="flex items-center justify-between mb-4 lg:mb-6">
+          <div className="w-full lg:w-[80%] space-y-3">
+            <p className="text-lg lg:text-xl font-bold">Support</p>
+            <p className="text-secondary text-xs lg:text-sm">
               If you need help or have any questions, send us an email and we
               will respond to you promptly.
             </p>

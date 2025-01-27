@@ -39,23 +39,31 @@ const FriendListCard = ({
       case "friendRequests":
         return (
           <>
-            <p className="font-medium text-[#13C634]">Accept Request</p>
+            <p className="text-sm lg:text-normal font-medium text-[#13C634]">
+              Accept Request
+            </p>
             <span className="text-secondary">
-              <IoMdClose size={25} />
+              <IoMdClose className="size-5  lg:size-6" />
             </span>
           </>
         );
       case "revoke":
         return (
           <>
-            <p className="font-medium text-primary">Revoke Request</p>
+            <p className="text-sm lg:text-normalfont-medium text-primary">
+              Revoke Request
+            </p>
             <span className="text-secondary">
-              <IoMdClose size={25} />
+              <IoMdClose className="size-5  lg:size-6" />
             </span>
           </>
         );
       case "blockUsers":
-        return <p className="font-medium text-primary">Unblock</p>;
+        return (
+          <p className="text-sm lg:text-normalfont-medium text-primary">
+            Unblock
+          </p>
+        );
       default:
         return renderTypeSpecificContent();
     }
@@ -66,10 +74,10 @@ const FriendListCard = ({
       case "chat":
         return (
           <>
-            <FiCamera className="text-[#9EA1AE]" size={25} />
+            <FiCamera className="text-[#9EA1AE]  size-5  lg:size-6" />
             <DropdownMenu
               menuItems={MESSAGE_SCREEN_ITEMS}
-              icon={<img src={menu} alt="menu" />}
+              icon={<img src={menu} alt="menu" className="size-5  lg:size-6" />}
               buttonClassName="bg-white"
               dropdownClassName="w-36 rounded-lg shadow-xl"
               itemClassName="text-black"
@@ -81,18 +89,18 @@ const FriendListCard = ({
       case "anrufe":
         return (
           <>
-            <img src={chat} alt="chat" />
-            <CiVideoOn size={25} className="text-[#9EA1AE]" />
-            <FiPhone size={25} className="text-[#9EA1AE]" />
+            <img src={chat} alt="chat" className=" size-5  lg:size-6" />
+            <CiVideoOn className="text-[#9EA1AE]  size-5  lg:size-6" />
+            <FiPhone className="text-[#9EA1AE]  size-5  lg:size-6" />
           </>
         );
       default:
         return (
           <>
-            <img src={chat} alt="chat" />
+            <img src={chat} alt="chat" className="size-5  lg:size-6" />
             <DropdownMenu
               menuItems={MENU_ITEMS}
-              icon={<img src={menu} alt="menu" />}
+              icon={<img src={menu} alt="menu" className="size-5  lg:size-6" />}
               buttonClassName="bg-white"
               dropdownClassName="w-36 rounded-lg shadow-xl"
               itemClassName="text-black"
@@ -107,18 +115,18 @@ const FriendListCard = ({
   return (
     <>
       <div
-        className="flex items-center w-full gap-x-5 my-3 cursor-pointer"
+        className="flex items-center w-full gap-x-3 lg:gap-x-5 my-3 cursor-pointer"
         onClick={() => {
           if (type === "chat" || type === "anrufe") {
             navigate("/admin/chat");
           }
         }}
       >
-        <img src={img} alt="profile" />
+        <img src={img} alt="profile" className="size-10 lg:size-auto" />
         <div className="flex justify-between w-full">
-          <div className="flex flex-col space-y-1">
-            <p className="font-medium">{name}</p>
-            <p className="text-secondary text-sm">
+          <div className="flex flex-col lg:space-y-1">
+            <p className="text-sm lg:text-normal font-medium">{name}</p>
+            <p className="text-secondary text-xs lg:text-sm">
               {type === "anrufe"
                 ? callTime
                 : type === "chat"
@@ -126,7 +134,9 @@ const FriendListCard = ({
                 : `${location} - ${distance}`}
             </p>
           </div>
-          <div className="flex items-center gap-4">{renderContent()}</div>
+          <div className="flex items-center gap-2 lg:gap-4">
+            {renderContent()}
+          </div>
         </div>
       </div>
       <hr className="my-2" />
@@ -191,7 +201,7 @@ const SettingsTabCard = ({ data, icon, name, handleClick }) => {
   return (
     <>
       <div
-        className="flex justify-between text-[#272829] py-6"
+        className="flex justify-between text-[#272829] py-3 lg:py-6 "
         onClick={() => {
           handleClick(data);
         }}

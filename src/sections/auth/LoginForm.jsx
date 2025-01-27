@@ -9,15 +9,15 @@ import { userLogin } from "../../redux/actions";
 const LoginForm = ({ setTab, dispatch }) => {
   return (
     <div>
-      <div className="mt-10">
+      <div className="mt-4 lg:mt-10">
         <div className="mb-8">
-          <h2 className="text-[30px] font-semibold">Sign In</h2>
-          <p className="text-[#6A6A6A] text-[18px]">
+          <h2 className="text-[18px] lg:text-[30px] font-semibold">Sign In</h2>
+          <p className="text-sm lg:text-[#6A6A6A] text-[18px]">
             Enter your email address and password to login.
           </p>
         </div>
-        <div className=" max-w-[80%]">
-          <div className="space-y-4 mb-5">
+        <div className="max-w-full  lg:max-w-[80%]">
+          <div className="space-y-2 lg:space-y-4 mb-5">
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"dean@dexxire.co |"}
@@ -30,10 +30,10 @@ const LoginForm = ({ setTab, dispatch }) => {
               type={"text"}
             />
           </div>
-          <div className="flex justify-between ">
+          <div className="flex items-center justify-between ">
             <Checkbox label={"Remember me"} />
             <p
-              className="text-red-500 text-[14px]"
+              className="text-red-500 text-xs lg:text-[14px]"
               onClick={() => {
                 setTab("Forget");
               }}
@@ -53,9 +53,9 @@ const LoginForm = ({ setTab, dispatch }) => {
           />
 
           <div className="flex justify-center items-center mb-4">
-            <div className="h-[1px] bg-[#9EA1AE] w-[200px]"></div>
+            <div className="h-[1px] bg-[#9EA1AE] w-auto lg:w-[200px]"></div>
             <span className="text-[#9EA1AE] text-sm">or continue with</span>
-            <div className="h-[1px] bg-[#9EA1AE] w-[200px]"></div>
+            <div className="h-[1px] bg-[#9EA1AE]  w-auto lg:w-[200px]"></div>
           </div>
           <SocialIcon />
         </div>

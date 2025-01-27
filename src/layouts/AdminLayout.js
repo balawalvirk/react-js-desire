@@ -21,7 +21,7 @@ const AdminLayout = ({ routes }) => {
 
                 <div className=" w-full relative overflow-y-scroll">
                     {
-                        !isOpen && <FaAlignJustify className="text-yellow cursor-pointer" onClick={toggle} />
+                        !isOpen && <FaAlignJustify size={30} className="block md:hidden m-2 cursor-pointer" onClick={toggle} />
                     }
                     <Routes>
                         {routes?.map((item, key) => {

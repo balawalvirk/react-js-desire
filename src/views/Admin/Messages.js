@@ -16,14 +16,14 @@ const Messages = () => {
             </div>
             <div className="flex items-center justify-center w-full border border-lightSecondary rounded-full mb-5">
                 <button
-                    className={`px-4 h-[48px] w-full rounded-full ${selected === "Chats" ? "bg-[#272829] text-white" : "text-black bg-white"
+                    className={`px-4 h-[40px] lg:h-[48px] w-full rounded-full ${selected === "Chats" ? "bg-[#272829] text-white" : "text-black bg-white"
                         }`}
                     onClick={() => setSelected("Chats")}
                 >
                     Chats (2)
                 </button>
                 <button
-                    className={`px-4 h-[48px] w-full rounded-full ${selected === "Anrufe" ? "bg-[#272829] text-white" : "text-black bg-white"
+                    className={`px-4 h-[40px] lg:h-[48px] w-full rounded-full ${selected === "Anrufe" ? "bg-[#272829] text-white" : "text-black bg-white"
                         }`}
                     onClick={() => setSelected("Anrufe")}
                 >

@@ -12,12 +12,12 @@ const UploadImages = ({ setTab }) => {
         </div>
       </div>
       <div className="mt-10">
-        <div className=" max-w-[80%]">
+        <div className="max-w-full  lg:max-w-[80%]">
           <div className="mb-8">
-            <h2 className="text-[30px] font-semibold">
+            <h2 className="text-[18px] lg:text-[30px] font-semibold">
               Uploade pictures from you
             </h2>
-            <p className="text-[#6A6A6A] text-[18px]">
+            <p className="text-[#6A6A6A] text-sm lg:text-[18px]">
               No nude pictures may be uploaded here. Please upload pictures of
               this kind only to private galleries. All pictures that violate our
               guidelines will be deleted immediately.
@@ -25,7 +25,7 @@ const UploadImages = ({ setTab }) => {
           </div>
           <div className="grid grid-cols-2 gap-x-5">
             <div>
-              <h2 className="text-[16px] font-semibold mb-3">
+              <h2 className="text-[14px] lg:text-[16px] font-semibold mb-3">
                 Public Pictures
               </h2>
               <div className="flex items-center gap-x-2">
@@ -36,7 +36,7 @@ const UploadImages = ({ setTab }) => {
               </div>
             </div>
             <div>
-              <h2 className="text-[16px] font-semibold mb-3">
+              <h2 className="text-[14px] lg:text-[16px] font-semibold mb-3">
                 Private Pictures
               </h2>
               <div className="flex items-center gap-x-2">

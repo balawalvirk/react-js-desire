@@ -35,7 +35,7 @@ const Login = () => {
     };
     return (
         <AuthWrapper>
-            <div className="ml-16 mt-12">
+            <div className="ml-6 mr-6 lg:mr-0 lg:ml-16 mt-12">
                 {(tab === "Login" || tab === "SignUp") && (
                     <Toggle tab={tab} setTab={setTab} />
                 )}

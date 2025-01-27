@@ -29,14 +29,16 @@ const PersonalInformation = ({ setTab }) => {
           <RxChevronLeft size={30} onClick={() => setTab("SignUp")} />
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-6 lg:mt-10">
         <div className="mb-8">
-          <h2 className="text-[30px] font-semibold">Personal info</h2>
-          <p className="text-[#6A6A6A] text-[18px]">
+          <h2 className="text-[18px] lg:text-[30px] font-semibold">
+            Personal info
+          </h2>
+          <p className="text-[#6A6A6A] text-sm lg:text-[18px]">
             Enter the following info to complete your profile
           </p>
         </div>
-        <div className=" max-w-[80%]">
+        <div className="max-w-full lg:max-w-[80%]">
           <div className="space-y-4 mb-5">
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
@@ -53,14 +55,14 @@ const PersonalInformation = ({ setTab }) => {
           </div>
           <div className="mb-3 space-y-3">
             <p className="font-medium">Gender</p>
-            <div className="grid grid-cols-3 gap-x-4">
+            <div className="grid lg:grid-cols-3 gap-x-4 ">
               {category?.map((item, index) => {
                 return (
                   <div
                     onClick={() => {
                       setSelectedGender(item?.gender);
                     }}
-                    className={`flex items-center  gap-x-3 justify-center rounded-full cursor-pointer py-3 ${
+                    className={`flex items-center mb-3 lg:mb-0  gap-x-3 justify-center rounded-full cursor-pointer py-3  ${
                       selectedGender === item?.gender
                         ? "bg-red-600 text-white"
                         : "bg-white text-black border border-[#F3F4F9]"
@@ -75,14 +77,14 @@ const PersonalInformation = ({ setTab }) => {
           </div>
           <div className="mb-3 space-y-3">
             <p className="font-medium">Choose who to search for</p>
-            <div className="grid grid-cols-3 gap-x-4 ">
+            <div className="grid lg:grid-cols-3 gap-x-4 ">
               {category?.map((item, index) => {
                 return (
                   <div
                     onClick={() => {
                       setGenderToSearch(item?.gender);
                     }}
-                    className={`flex items-center  gap-x-3 justify-center rounded-full cursor-pointer py-3 ${
+                    className={`flex items-center mb-3 lg:mb-0   gap-x-3 justify-center rounded-full cursor-pointer py-3 ${
                       genderToSearch === item?.gender
                         ? "bg-red-600 text-white"
                         : "bg-white text-black border border-[#F3F4F9]"

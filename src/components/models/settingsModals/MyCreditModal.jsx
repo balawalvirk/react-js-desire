@@ -25,16 +25,16 @@ const MyCreditModal = ({ isOpen, onClose }) => {
   ];
   return (
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
+      <div className="flex justify-between mb-4 lg:mb-6">
+        <p className="text-xl font-bold">My Credit</p>
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
+        >
+          <IoMdClose className="h-6 w-6" />
+        </button>
+      </div>
       <div>
-        <div className="flex justify-between mb-6">
-          <p className="text-xl font-bold">My Credit</p>
-          <button
-            onClick={onClose}
-            className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-          >
-            <IoMdClose className="h-6 w-6" />
-          </button>
-        </div>
         <div>
           <table
             className="min-w-full table-auto"

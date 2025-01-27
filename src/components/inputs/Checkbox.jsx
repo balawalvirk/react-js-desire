@@ -8,7 +8,7 @@ const Checkbox = ({ label, labelClassName }) => {
           type="checkbox"
           className={`shrink-0 mt-0.5 border-gray-200 rounded size-4`}
         />
-        <label className={`${labelClassName}  text-[#6A6A6A] ms-3 `}>
+        <label className={`${labelClassName} text-sm  text-[#6A6A6A] ms-3 `}>
           {label}
         </label>
       </div>

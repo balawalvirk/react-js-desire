@@ -30,15 +30,17 @@ const VisibleProfiles = () => {
   return (
     <>
       <div className="bg-[#DB9501] text-white p-4 rounded-2xl mb-5 relative">
-        <h2 className="text-[20px] font-bold ">Gold Member Package</h2>
-        <p className="text-sm mb-6">
+        <h2 className="text-md lg:text-[20px] font-bold ">
+          Gold Member Package
+        </h2>
+        <p className="text-xs lg:text-sm mb-6">
           Unlock Gold Benefits and Access Additional Features
         </p>
-        <p className="text-[20px] font-bold ">
+        <p className="text-sm lg:text-[20px] font-bold ">
           50 Coins <sub className="line-through text-sm">100</sub>
         </p>
 
-        <div className="absolute top-24 right-5 ">
+        <div className="absolute lg:top-24 lg:right-5 ">
           <div className="size-20 flex items-center justify-center rounded-full bg-primary  ">
             <p>
               50% <br /> OFF
@@ -97,10 +99,10 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
   return (
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
       <div>
-        <p className="text-xl font-bold mb-5    ">Subscription</p>
+        <p className="text-lg lg:text-xl font-bold mb-5    ">Subscription</p>
         <div className="flex items-center justify-center  w-full border border-lightSecondary rounded-full mb-5 ">
           <button
-            className={`px-4  h-[52px] w-full rounded-full   ${
+            className={`text-xs lg:text-normal px-4  h-10 lg:h-[52px] w-full rounded-full   ${
               tab === "visible"
                 ? "bg-[#272829] text-white"
                 : " text-black bg-white"
@@ -110,7 +112,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
             Visible Profiles
           </button>
           <button
-            className={`px-4 h-[52px]  rounded-full w-full  ${
+            className={`text-xs lg:text-normal px-4 h-10 lg:h-[52px]  rounded-full w-full  ${
               tab === "invisible"
                 ? "bg-[#272829] text-white"
                 : " text-black bg-white"

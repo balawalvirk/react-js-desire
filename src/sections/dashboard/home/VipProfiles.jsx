@@ -1,0 +1,28 @@
+import React from "react";
+import { profiles } from "../../../DummyData";
+import { UserProfileCard } from "../../../components/card/Cards";
+
+const VipProfiles = () => {
+  return (
+    <div>
+      <h1 className="text-[24px] font-semibold mb-5 ">VIP Profiles</h1>
+      <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-x-3 ">
+        {profiles
+          ?.filter((i) => i?.type === "vip")
+          .map((i, index) => (
+            <UserProfileCard
+              key={index}
+              location={i?.location}
+              badge={i?.badge}
+              name={i?.name}
+              distance={i?.distance}
+              img={i?.img}
+              age={i?.age}
+            />
+          ))}
+      </div>
+    </div>
+  );
+};
+
+export default VipProfiles;

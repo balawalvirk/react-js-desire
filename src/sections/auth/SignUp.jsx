@@ -1,0 +1,79 @@
+import React from "react";
+import FormInput from "../../components/inputs/FormInput";
+import { MdEmail } from "react-icons/md";
+import Checkbox from "../../components/inputs/Checkbox";
+import Button from "../../components/buttons/Button";
+import SocialIcon from "../../components/SocialIcon";
+
+const SignUp = ({ setTab }) => {
+  return (
+    <div>
+      <div className="mt-10">
+        <div className="mb-8">
+          <h2 className="text-[30px] font-semibold ">Sign Up</h2>
+          <p className="text-[#6A6A6A] text-[18px]">
+            Enter your detail below to sign up.
+          </p>
+        </div>
+        <div className=" max-w-[80%]">
+          <div className="space-y-4 mb-5">
+            <FormInput
+              inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
+              placeholder={"dean@dexxire.co |"}
+              type={"text"}
+              icon={<MdEmail />}
+            />
+            <FormInput
+              inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
+              placeholder={"Enter Password"}
+              type={"text"}
+            />
+            <FormInput
+              inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
+              placeholder={"Re-Enter Password"}
+              type={"text"}
+            />
+          </div>
+          <div className="flex justify-end ">
+            <p
+              className="text-red-500 text-[14px]"
+              onClick={() => {
+                setTab("Login");
+              }}
+            >
+              Already have an Account ?
+            </p>
+          </div>
+
+          <Button
+            text={"Create Account"}
+            handleClick={() => setTab("SMSAuth")}
+            btnClassName={
+              "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-8"
+            }
+          />
+
+          <div className="flex justify-center items-center mb-4">
+            <div className="h-[1px] bg-[#9EA1AE] w-[200px]"></div>
+            <span className="text-[#9EA1AE] text-sm">or continue with</span>
+            <div className="h-[1px] bg-[#9EA1AE] w-[200px]"></div>
+          </div>
+          <SocialIcon />
+
+          <div className="flex flex-col items-center gap-x-2 space-y-6 mt-8">
+            <Checkbox
+              labelClassName="text-sm"
+              label={`You consent to receive up to 10 automated messages / month. Reply "STOP" to opt out, "HELP" for support. Standard rates apply.`}
+            />
+            <Checkbox
+              labelClassName="text-sm"
+              label={`By signing up, you agree to our Privacy Policy, Terms & Conditions, and marketing terms, which you can revoke anytime.`}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignUp;

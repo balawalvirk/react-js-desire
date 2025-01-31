@@ -3,94 +3,217 @@ import SwipeToPayButton from "../../buttons/SwipeToPayButton";
 import StandardModal from "../StandardModal";
 import { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-const features = [
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+const visibleProfiles = [
   {
-    text: "Overview of other members in the area",
+    title: "Gold Member Package",
+    description: "Unlock Gold Benefits and Access Additional Features",
+    coins: "50 Coins",
+    subText: "100",
+    percent: "50%",
+    features: [
+      "Overview of other members in the area",
+      "See who likes your profile",
+      "Profile marked Gold",
+      "Better ranking on the homepage",
+      "Start unlimited new conversations",
+      "Change your location every time",
+      "You get 500 free minutes for call/video",
+    ],
+    color: "#DB9501",
   },
   {
-    text: "See who likes your profile",
-  },
-  {
-    text: "Profile marked Gold",
-  },
-  {
-    text: "Better ranking on the homepage",
-  },
-  {
-    text: "Start unlimited new conversations",
-  },
-  {
-    text: "Change your location every time",
-  },
-  {
-    text: "You get 500 free minutes for call/video",
+    title: "VIP Member Package",
+    description: "Unlock VIP Benefits and Access Additional Features",
+    coins: "100 Coins",
+    subText: "100",
+    percent: "50%",
+    features: [
+      "Overview of other members in the area",
+      "See who likes your profile",
+      "Always displayed in top positions",
+      "Profile marked VIP",
+      "See all private pictures",
+      "Start unlimited new conversations",
+      "Start unlimited new conversations",
+      "Change your location every time",
+      "You get 500 free minutes for call / video",
+    ],
+    color: "#C61323",
   },
 ];
-const VisibleProfiles = () => {
-  return (
-    <>
-      <div className="bg-[#DB9501] text-white p-4 rounded-2xl mb-5 relative">
-        <h2 className="text-md lg:text-[20px] font-bold ">
-          Gold Member Package
-        </h2>
-        <p className="text-xs lg:text-sm mb-6">
-          Unlock Gold Benefits and Access Additional Features
-        </p>
-        <p className="text-sm lg:text-[20px] font-bold ">
-          50 Coins <sub className="line-through text-sm">100</sub>
-        </p>
+const InVisibleProfilesData = [
+  {
+    title: "Ghost Member Package",
+    description: "Unlock Ghost Benefits and Access Additional Features",
+    coins: "20 Coins",
+    subText: "100",
+    percent: "50%",
+    features: [
+      "You profile is only visible to friends",
+      "Stealth icons for free",
+      "You get 200 free minutes for call / video",
+    ],
+    color: "#F6F6F6",
+  },
+  {
+    title: "Ghost Member Package",
+    description: "Unlock Ghost Benefits and Access Additional Features",
+    coins: "100 Coins",
+    subText: "200",
+    percent: "50%",
+    features: [
+      "You profile is only visible to friends",
+      "Stealth icons for free",
+      "Overview of other members in the area",
+      "See who likes your profile",
+      "See all private pictures",
+      "Start unlimited new conversations",
+      "Start unlimited new conversations",
+      "Change your location every time",
+      "You get 1000 free minutes for call / video",
+    ],
+    color: "#C61323",
+  },
+  {
+    title: "Celebrity Member Package",
+    description: "Unlock Celebrity Benefits and Access Additional Features",
+    coins: "500 Coins",
+    subText: "1000",
+    percent: "50%",
+    features: [
+      "You profile is only visible to friends",
+      "Stealth icons for free",
+      "Overview of other members in the area",
+      "See who likes your profile",
+      "See all private pictures",
+      "Start unlimited new conversations",
+      "Change your location every time",
+      "Nobody can take screenshots",
+    ],
+    color: "#272829",
+  },
+];
+const VisibleProfiles = ({ data }) => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    customPaging: (i) => (
+      <div
+        className={`h-3 w-3 rounded-full ${
+          i === 0 ? "bg-red-500" : "bg-gray-400"
+        }`}
+      />
+    ),
+    appendDots: (dots) => (
+      <div className="flex justify-center space-x-2 mt-2 rounded-full relative z-10 bg-white py-2">
+        {dots}
+      </div>
+    ),
+  };
 
-        <div className="absolute lg:top-24 lg:right-5 ">
-          <div className="size-20 flex items-center justify-center rounded-full bg-primary  ">
-            <p>
-              50% <br /> OFF
+  return (
+    <Slider {...settings}>
+      {data?.map((i, index) => (
+        <div key={index} className="p-4">
+          <div
+            style={{ backgroundColor: i?.color }}
+            className="text-white p-4 rounded-2xl mb-5 relative"
+          >
+            <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
+            <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
+            <p className="text-sm lg:text-[20px] font-bold">
+              {i?.coins}{" "}
+              <sub className="line-through text-sm">{i?.subText}</sub>
             </p>
+
+            <div className="absolute lg:top-24 lg:right-5">
+              <div className="size-20 flex items-center justify-center rounded-full bg-primary">
+                <p>
+                  {i?.percent} <br /> OFF
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 mb-2 space-y-2 relative">
+            {i?.features.map((feature, index) => (
+              <div className="flex justify-between text-sm" key={index}>
+                <p>{feature}</p>
+                <FaCheckCircle color="#13C634" />
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      <div className=" mt-12 mb-4 space-y-2 relative">
-        {features.map((feature, index) => (
-          <div className="flex justify-between text-sm " key={index}>
-            <p> {feature.text}</p>
-            <p>
-              <FaCheckCircle color="#13C634" />
-            </p>
-          </div>
-        ))}
-      </div>
-    </>
+      ))}
+    </Slider>
   );
 };
-const InVisibleProfiles = () => {
+const InVisibleProfiles = ({ data }) => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    customPaging: (i) => (
+      <div
+        className={`h-3 w-3 rounded-full ${
+          i === 0 ? "bg-red-500" : "bg-gray-400"
+        }`}
+      />
+    ),
+    appendDots: (dots) => (
+      <div className="flex justify-center space-x-2 mt-2 rounded-full relative z-10 bg-white py-2 mb-6">
+        {dots}
+      </div>
+    ),
+  };
+
   return (
     <>
-      <div className="bg-[#272829] text-white p-4 rounded-2xl mb-5 relative">
-        <h2 className="text-[20px] font-bold ">Celebrity Member Package</h2>
-        <p className="text-sm mb-6">
-          Unlock Celebrity Benefits and Access Additional Features
-        </p>
-        <p className="text-[20px] font-bold ">
-          500 Coins <sub className="line-through text-sm">1000</sub>
-        </p>
+      <Slider {...settings}>
+        {data?.map((i, index) => (
+          <div key={index} className="p-4">
+            <div
+              style={{ backgroundColor: i?.color }}
+              className={` ${
+                index === 0 ? "text-[#272829]" : "text-white"
+              } p-4 rounded-2xl mb-5 relative`}
+            >
+              <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
+              <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
+              <p className="text-sm lg:text-[20px] font-bold">
+                {i?.coins}{" "}
+                <sub className="line-through text-sm">{i?.subText}</sub>
+              </p>
 
-        <div className="absolute top-24 right-5 ">
-          <div className="size-20 flex items-center justify-center rounded-full bg-primary  ">
-            <p>
-              50% <br /> OFF
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className=" mt-12 mb-4 space-y-2 relative">
-        {features.map((feature, index) => (
-          <div className="flex justify-between text-sm " key={index}>
-            <p> {feature.text}</p>
-            <p>
-              <FaCheckCircle color="#13C634" />
-            </p>
+              <div className="absolute lg:top-24 lg:right-5">
+                <div className="size-20 flex items-center justify-center rounded-full bg-primary text-white">
+                  <p>
+                    {i?.percent} <br /> OFF
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 mb-0 space-y-2 relative">
+              {i?.features.map((feature, index) => (
+                <div className="flex justify-between text-sm" key={index}>
+                  <p>{feature}</p>
+                  <FaCheckCircle color="#13C634" />
+                </div>
+              ))}
+            </div>
           </div>
         ))}
-      </div>
+      </Slider>
     </>
   );
 };
@@ -132,7 +255,11 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
           </button>
         </div>
         <div>
-          {tab === "visible" ? <VisibleProfiles /> : <InVisibleProfiles />}
+          {tab === "visible" ? (
+            <VisibleProfiles data={visibleProfiles} />
+          ) : (
+            <InVisibleProfiles data={InVisibleProfilesData} />
+          )}
           <SwipeToPayButton />
         </div>
       </div>

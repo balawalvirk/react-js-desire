@@ -3,7 +3,7 @@ import React from "react";
 const FriendsScreenHeader = ({ title }) => {
   return (
     <div className="flex items-center justify-between mb-12 mt-5">
-      <p className="text-normal font-semibold ">{title}</p>
+      <p className="text-lg font-semibold ">{title}</p>
       <div className="flex items-center text-secondary">
         <input
           type="radio"

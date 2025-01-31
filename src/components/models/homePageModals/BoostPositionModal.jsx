@@ -14,14 +14,11 @@ const BoostPositionModal = ({ isOpen, onClose }) => {
     <>
       <StandardModal isOpen={isOpen} onClose={onClose} size="md">
         <div>
-          <div className="flex justify-between mb-6">
-            <p className="text-xl font-bold">Position</p>
+          <div className="flex items-center justify-between mb-6 text-[#090D20]">
+            <p className="text-xl font-bold  text-[#2D264B]">Position</p>
 
-            <button
-              onClick={onClose}
-              className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-            >
-              <IoMdClose className="h-6 w-6" />
+            <button onClick={onClose}>
+              <IoMdClose className="h-8 w-8" />
             </button>
           </div>
 
@@ -31,7 +28,7 @@ const BoostPositionModal = ({ isOpen, onClose }) => {
           <div className="flex justify-between">
             <p className="text-black text-sm text-center my-3">Use interval</p>
             <div className="flex items-center justify-start gap-2">
-              <div className="relative inline-block w-[52px] h-7 select-none">
+              <div className="relative inline-block w-[48px] h-7 select-none">
                 <input
                   type="checkbox"
                   name="toggle"
@@ -70,7 +67,7 @@ const BoostPositionModal = ({ isOpen, onClose }) => {
             <p className="text-secondary text-sm text-center">
               Here you can automatically preset the boost at an arrival.
             </p>
-            <div className="flex justify-center items-center my-3">
+            <div className="flex justify-center items-center gap-x-4 my-3">
               <div className="h-[1px] bg-[#9EA1AE] w-[200px]"></div>
               <span className="text-[#9EA1AE] text-sm">or </span>
               <div className="h-[1px] bg-[#9EA1AE] w-[200px]"></div>

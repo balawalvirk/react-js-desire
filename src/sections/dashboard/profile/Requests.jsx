@@ -4,11 +4,11 @@ import { friendsList } from "../../../DummyData";
 
 const Requests = ({ setSelectedView }) => {
   return (
-    <div className="py-1 px-6">
+    <div className="py-1 px-6 ">
       <div className="flex justify-between mb-4">
         <div className="flex items-center gap-x-3">
           <div
-            className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center"
+            className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
             onClick={() => {
               setSelectedView("profileInformation");
             }}
@@ -26,7 +26,7 @@ const Requests = ({ setSelectedView }) => {
           <label className="text-md font-semibold ms-2 0">Select</label>
         </div>
       </div>
-      <div>
+      <div className="mt-6">
         {friendsList?.map((i) => (
           <ProfileFriendsListCard
             name={i?.name}

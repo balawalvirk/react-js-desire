@@ -7,6 +7,8 @@ import HomePageHeader from "../../components/headers/HomePageHeader";
 import SearchFilterModal from "../../components/models/homePageModals/SearchFilterModal";
 import GoldProfiles from "../../sections/dashboard/home/GoldProfiles";
 import VipProfiles from "../../sections/dashboard/home/VipProfiles";
+import StandardProfiles from "../../sections/dashboard/home/StandardProfiles";
+
 const Dashboard = () => {
     const [filterModal, setFilterModal] = useState(false);
     const [positionModal, setPositionModal] = useState(false);
@@ -24,12 +26,13 @@ const Dashboard = () => {
                 setPositionModal={setPositionModal}
             />
             {profiles?.length > 0 ? (
-                <>
+                <div className="mt-6">
                     <VipProfiles />
                     <GoldProfiles />
-                </>
+                    <StandardProfiles />
+                </div>
             ) : (
-                <div className="flex flex-col justify-center items-center h-[90vh]">
+                <div className="flex flex-col justify-center items-center h-[90vh] ">
                     <img src={searchFilter} alt="" />
                     <div>
                         <Button

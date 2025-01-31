@@ -20,7 +20,7 @@ const Profile = () => {
         }
     }
     return (
-        <div className="p-3 lg:p-5">
+        <div className="p-3 lg:p-5 ">
             {renderView()}
         </div>
     );

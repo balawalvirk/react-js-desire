@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { CiVideoOn } from "react-icons/ci";
-import { FiPhone } from "react-icons/fi";
+import { FaMicrophone } from "react-icons/fa";
 import { RxChevronLeft } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
+import image from '../../assets/images/friend.png';
+import attachment from '../../assets/svgs/Attachment.svg';
+import happy from '../../assets/svgs/Happy  1.svg';
+import send from '../../assets/svgs/Send 3.svg';
+import video from '../../assets/svgs/Video 2.svg';
+import phone from '../../assets/svgs/call.svg';
 import menu from "../../assets/svgs/menu.svg";
-import image from '../../assets/images/friend.png'
-import DropdownMenu from "../../components/inputs/DropdownMenu";
 import ChatBubble from "../../components/ChatBubble";
-import { FaMicrophone, FaRegSmile } from "react-icons/fa";
-import { GoPaperclip } from "react-icons/go";
-import { RiSendPlaneFill } from "react-icons/ri";
+import DropdownMenu from "../../components/inputs/DropdownMenu";
 import AudioCallModal from "../../components/models/chatModals/AudioCallModal";
 import VideoCallModal from "../../components/models/chatModals/VideoCallModal";
 const MENU_ITEMS = [
@@ -28,6 +30,7 @@ const MENU_ITEMS = [
 ];
 
 const Chat = () => {
+    const navigate = useNavigate()
     const [messages, setMessages] = useState([
         {
             message: 'Hi Sabir, how are you? I saw on the app that we’ve crossed paths several times this week. 😊',
@@ -76,15 +79,17 @@ const Chat = () => {
                 }} />
                 <div className="flex justify-between mb-4">
                     <div className="flex items-center gap-x-3">
-                        <div className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center">
+                        <div onClick={() => {
+                            navigate(-1)
+                        }} className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer">
                             <RxChevronLeft size={30} />
                         </div>
                     </div>
                     <div className="flex items-center gap-x-3">
-                        <CiVideoOn size={25} className="text-[#272829]" onClick={() => {
+                        <img src={video} className="text-[#272829]" onClick={() => {
                             setVideoCall(true)
                         }} />
-                        <FiPhone size={25} className="text-[#272829]" onClick={() => {
+                        <img src={phone} className="text-[#272829]" onClick={() => {
                             setAudioCall(true)
                         }} />
                         <DropdownMenu
@@ -136,14 +141,14 @@ const Chat = () => {
                                 placeholder="Your message"
                                 value={newMessage}
                                 onChange={(e) => setNewMessage(e.target.value)}
-                                className="flex-grow px-4 py-4  border border-gray-200 mr-2 relative bg-gray-100 rounded-full"
+                                className="flex-grow px-4 py-4  border border-gray-200 mr-2 relative  rounded-full"
                             />
-                            <div className="absolute right-20">
-                                <div className="flex gap-x-3"><FaRegSmile size={20} className="text-gray-500 mr-2" />
-                                    <GoPaperclip size={20} className="text-gray-500 mr-2" />
-                                    <div className="rounded-full  border-lightSecondary">
-                                        <RiSendPlaneFill size={20} className="text-gray-500 mr-2" />
-                                    </div>
+                            <div className="absolute right-16">
+                                <div className="flex gap-x-3"><img src={happy} />
+                                    <img src={attachment} size={20} className="text-gray-500 mr-2" />
+                                    <button type="button" className="bg-black border border-lightSecondary rounded-full p-4">
+                                        <img src={send} size={20} className="text-primary" />
+                                    </button>
                                 </div>
                             </div>
                             <button type="submit" className="bg-white border border-lightSecondary rounded-full p-4">

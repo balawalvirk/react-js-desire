@@ -53,12 +53,12 @@ export const settingTabs = [
     },
     {
         icon: <BsDatabase size={25} />,
-        name: 'Backend',
+        name: 'Admin Panel',
         tab: '10'
     },
     {
         icon: <IoLogOutOutline color="red" size={25} />,
-        name: 'Sign Out',
+        name: <label className="text-red-600">Sign Out</label>,
         tab: '11'
     }
 ]

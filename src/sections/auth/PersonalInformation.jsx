@@ -1,22 +1,30 @@
 import React, { useState } from "react";
+import { FaCalendar, FaUser } from "react-icons/fa";
 import { RxChevronLeft } from "react-icons/rx";
 import "react-international-phone/style.css";
+import male from "../../assets/svgs/male.svg";
+import female from "../../assets/svgs/female.svg";
+import transgender from "../../assets/svgs/transgender.svg";
+import maleWhite from "../../assets/svgs/maleWhite.svg";
+import femaleWhite from "../../assets/svgs/femaleWhite.svg";
+import user from "../../assets/svgs/user.svg";
+import calendar from "../../assets/svgs/calendar.svg";
 import Button from "../../components/buttons/Button";
 import FormInput from "../../components/inputs/FormInput";
-import { FaCalendar, FaUser } from "react-icons/fa";
-import { IoIosFemale, IoIosMale, IoIosTransgender } from "react-icons/io";
 const category = [
   {
     gender: "Male",
-    icon: <IoIosMale size={20} />,
+    icon1: <img src={male} />,
+    icon2: <img src={maleWhite} />,
   },
   {
     gender: "Female",
-    icon: <IoIosFemale size={20} />,
+    icon1: <img src={female} />,
+    icon2: <img src={femaleWhite} />,
   },
   {
     gender: "Trans",
-    icon: <IoIosTransgender size={20} />,
+    icon1: <img src={transgender} />,
   },
 ];
 const PersonalInformation = ({ setTab }) => {
@@ -44,13 +52,13 @@ const PersonalInformation = ({ setTab }) => {
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"username"}
               type={"text"}
-              icon={<FaUser />}
+              icon={<img src={user} />}
             />
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"13 jan 2021"}
               type={"text"}
-              icon={<FaCalendar />}
+              icon={<img src={calendar} />}
             />
           </div>
           <div className="mb-3 space-y-3">
@@ -68,7 +76,11 @@ const PersonalInformation = ({ setTab }) => {
                         : "bg-white text-black border border-[#F3F4F9]"
                     }`}
                   >
-                    <span>{item?.icon}</span>
+                    <span>
+                      {selectedGender === item?.gender
+                        ? item?.icon2
+                        : item?.icon1}
+                    </span>
                     <span>{item?.gender}</span>
                   </div>
                 );
@@ -90,7 +102,11 @@ const PersonalInformation = ({ setTab }) => {
                         : "bg-white text-black border border-[#F3F4F9]"
                     }`}
                   >
-                    <span>{item?.icon}</span>
+                    <span>
+                      {genderToSearch === item?.gender
+                        ? item?.icon2
+                        : item?.icon1}
+                    </span>
                     <span>{item?.gender}</span>
                   </div>
                 );
@@ -100,7 +116,7 @@ const PersonalInformation = ({ setTab }) => {
           <div className="mt-4">
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
-              placeholder={"Place of Residence"}
+              placeholder={"Enter Residence"}
               label={"Place of Residence"}
               type={"text"}
               labelClassName={"font-medium"}

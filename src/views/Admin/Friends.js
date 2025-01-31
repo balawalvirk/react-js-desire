@@ -4,7 +4,6 @@ import menu from "../../assets/svgs/menu.svg";
 import { FriendListCard } from "../../components/card/Cards";
 import Icon from "../../components/icons/Icon";
 import DropdownMenu from "../../components/inputs/DropdownMenu";
-
 import { friendsList } from "../../DummyData";
 import InviteFriendsModal from "../../components/models/homePageModals/InviteFriendsModal";
 const Friends = () => {
@@ -16,15 +15,20 @@ const Friends = () => {
             action: () => setIsOpen(true),
         },
         {
-            label: "Block Users",
-            action: () => navigate("/admin/block-users")
+            label: (
+                <>
+                    Blocked Users <span className="text-red-500">(12)</span>
+                </>
+            ),
+            action: () => navigate("/admin/block-users"),
         },
     ];
+
     return (
         <div className="p-3 lg:p-5">
             <InviteFriendsModal isOpen={isOpen} onClose={(prev) => setIsOpen(!prev)} />
             <div className="flex justify-between items-center ">
-                <p className="text-lg font-semibold text-[25px]">Friends</p>
+                <p className="text-xl font-semibold ">Friends</p>
                 <DropdownMenu
                     menuItems={menuItems}
                     icon={
@@ -52,8 +56,8 @@ const Friends = () => {
                     </p>
                 </div>
             </div>
-            <div>
-                <p className="text-normal font-semibold ">All Friends (16)</p>
+            <div className="mt-6">
+                <p className="text-normal font-semibold my-4">My All Friends (16)</p>
                 {friendsList?.map((i) => (
                     <FriendListCard
                         name={i?.name}

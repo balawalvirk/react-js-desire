@@ -5,6 +5,8 @@ import Button from "../../buttons/Button";
 import FormInput from "../../inputs/FormInput";
 import StandardModal from "../StandardModal";
 import BoostPositionModal from "./BoostPositionModal";
+import { TwoThumbInputRange } from "react-two-thumb-input-range";
+
 const SearchFilterModal = ({
   isOpen,
   onClose,
@@ -12,6 +14,11 @@ const SearchFilterModal = ({
   setPositionModal,
   setFilterModal,
 }) => {
+  const [value, setValue] = useState([20, 28]);
+
+  const onValueChange = (values) => {
+    setValue(values);
+  };
   return (
     <>
       <BoostPositionModal
@@ -47,24 +54,33 @@ const SearchFilterModal = ({
                   type="range"
                   min="0"
                   max="100"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2  rounded-lg appearance-none cursor-pointer inputRange"
                 />
               </div>
             </div>
             <div className="mb-5">
-              <div className="flex justify-between items-center mb-3">
+              <div className="flex justify-between items-center mb-6">
                 <h3 className="text-base font-semibold text-black">Age</h3>
                 <span className="text-sm font-medium text-gray-600">20-40</span>
               </div>
 
-              <div className="relative">
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                />
-              </div>
+              <TwoThumbInputRange
+                onChange={onValueChange}
+                values={value}
+                min={1000}
+                max={10000}
+                railColor={"#E8E6EA"}
+                thumbColor={"#272829"}
+                trackColor={"#272829"}
+                thumbStyle={{
+                  height: "25px",
+                  width: "25px",
+                }}
+                inputStyle={{
+                  minWidth: "100% ",
+                }}
+                showLabels={false}
+              />
             </div>
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}

@@ -129,7 +129,7 @@ const AppSettingsModal = ({ isOpen, onClose }) => {
           </div>
           <div className=" space-y-4">
             <div>
-              <label className="mx-2 text-sm font-medium">LANGUAGE</label>
+              <label className="mx-2 text-sm font-medium">Language</label>
               <div
                 className="border border-lightSecondary rounded-full cursor-pointer"
                 onClick={() => {
@@ -155,7 +155,7 @@ const AppSettingsModal = ({ isOpen, onClose }) => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="mx-2 text-sm font-medium">Discover</label>
+              <label className="mx-2 text-sm font-medium">Around Me</label>
               <div className="border border-lightSecondary rounded-full ">
                 <div className="text-secondary flex justify-between p-3 items-center">
                   <p className="text-sm">Show me </p>
@@ -199,7 +199,7 @@ const AppSettingsModal = ({ isOpen, onClose }) => {
               })}
             </div>
             <div>
-              <label className="mx-2 text-sm font-medium">UNITS</label>
+              <label className="mx-2 text-sm font-medium">Units</label>
               {units?.map((i) => {
                 return (
                   <div className="border border-lightSecondary rounded-full mb-3 mt-3 ">
@@ -207,8 +207,8 @@ const AppSettingsModal = ({ isOpen, onClose }) => {
                       <p className="text-sm">{i?.title}</p>
                       <div className="flex items-center gap-x-2">
                         <select name="" id="">
-                          <option value="">KM</option>
-                          <option value="">CM</option>
+                          <option value="">Km</option>
+                          <option value="">Cm</option>
                           <option value="">Inch</option>
                         </select>
                       </div>
@@ -219,7 +219,7 @@ const AppSettingsModal = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label className="mx-2 text-sm font-medium">PRIVACY</label>
+              <label className="mx-2 text-sm font-medium">Privacy</label>
               {privacy?.map((i) => {
                 return (
                   <div

@@ -2,6 +2,7 @@ import { IoMdClose } from "react-icons/io";
 import SwipeToPayButton from "../../buttons/SwipeToPayButton";
 import FormInput from "../../inputs/FormInput";
 import StandardModal from "../StandardModal";
+import Button from "../../buttons/Button";
 
 const SupportModal = ({ isOpen, onClose }) => {
   return (
@@ -22,16 +23,23 @@ const SupportModal = ({ isOpen, onClose }) => {
             <IoMdClose className="h-6 w-6" />
           </button>
         </div>
-        <div className=" space-y-4">
-          <FormInput
-            inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
-            className={"space-y-2"}
-            placeholder={"Select reference"}
-            type={"text"}
-            label={"Reference"}
-          />
+        <div className=" space-y-2">
+          <label htmlFor="" className="font-medium text-[14px] mx-2">
+            Reference
+          </label>
+          <select
+            name=""
+            id=""
+            className="border  w-full mb-3 mt-3 py-3 px-5 block  border-gray-200 rounded-full text-sm text-gray-400"
+          >
+            <option value="">Select reference</option>
+            <option value="">option1</option>
+            <option value="">option2</option>
+            <option value="">option3</option>
+          </select>
+
           <div className="space-y-2">
-            <label className="mx-3 ">Message</label>
+            <label className="font-medium text-[14px] mx-2">Message</label>
             <textarea
               className={
                 "w-full border border-1 border-lightSecondary text-sm  rounded-lg h-36 p-3"
@@ -42,7 +50,12 @@ const SupportModal = ({ isOpen, onClose }) => {
             />
           </div>
         </div>
-        <SwipeToPayButton />
+        <Button
+          text={"Send"}
+          btnClassName={
+            "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-8"
+          }
+        />
       </div>
     </StandardModal>
   );

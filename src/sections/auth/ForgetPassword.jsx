@@ -3,11 +3,17 @@ import { MdEmail } from "react-icons/md";
 import { RxChevronLeft } from "react-icons/rx";
 import Button from "../../components/buttons/Button";
 import FormInput from "../../components/inputs/FormInput";
+import emailSvg from "../../assets/svgs/email.svg";
 const ForgetPassword = ({ setTab }) => {
   return (
     <div>
       <div>
-        <div className="size-16 border border-[#E8E6EA] rounded-full flex items-center justify-center">
+        <div
+          className="size-16 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
+          onClick={() => {
+            setTab("Login");
+          }}
+        >
           <RxChevronLeft size={30} />
         </div>
       </div>
@@ -24,7 +30,7 @@ const ForgetPassword = ({ setTab }) => {
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"dean@dexxire.co |"}
               type={"text"}
-              icon={<MdEmail />}
+              icon={<img src={emailSvg} />}
             />
           </div>
 
@@ -34,14 +40,15 @@ const ForgetPassword = ({ setTab }) => {
               "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-4"
             }
           />
-          <div className="flex justify-end ">
+          <div className="flex justify-center ">
             <p
-              className="text-red-500 text-[14px] cursor-pointer"
+              className="text-[#6A6A6A] text-[16px] cursor-pointer"
               onClick={() => {
                 setTab("SignUp");
               }}
             >
-              Create Account !
+              You remember?{" "}
+              <span className="font-bold text-primary">Sign Up</span>
             </p>
           </div>
         </div>

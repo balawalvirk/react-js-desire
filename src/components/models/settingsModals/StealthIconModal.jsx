@@ -3,10 +3,10 @@ import Button from "../../buttons/Button";
 import StandardModal from "../StandardModal";
 import { SettingsIconsCard } from "../../card/Cards";
 const icons = [
-  { title: "Champions League", action: "Buy", colorCode: "[#C61323]" },
-  { title: "Flight Radar", action: "Buy", colorCode: "[#221831]" },
-  { title: "Gym Tips", action: "Buy", colorCode: "[#0866FF]" },
-  { title: "Health Care", action: "Buy", colorCode: "[#DB9501]" },
+  { title: "Champions League", action: "Buy", colorCode: "#C61323" },
+  { title: "Flight Radar", action: "Buy", colorCode: "#221831" },
+  { title: "Gym Tips", action: "Buy", colorCode: "#0866FF" },
+  { title: "Health Care", action: "Buy", colorCode: "#DB9501" },
 ];
 const StealthIconModal = ({ isOpen, onClose }) => {
   return (

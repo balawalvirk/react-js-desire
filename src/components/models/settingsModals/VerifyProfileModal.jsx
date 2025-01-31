@@ -6,21 +6,24 @@ import { useState } from "react";
 const StepOne = ({ onClose }) => {
   return (
     <>
-      <div className="w-[80%] space-y-2 mb-5">
-        <p className="text-xl font-bold">Verification</p>
-        <p className="text-secondary text-sm">
+      <div className="flex flex-col w-full mb-6">
+        <div className="flex justify-between items-center mb-3">
+          <p className="text-xl font-bold">Verification</p>
+          <button onClick={onClose} className="text-black">
+            <IoMdClose className="h-8 w-8" />
+          </button>
+        </div>
+        <p className="text-secondary text-sm w-[80%]">
           Please take a selfie with the gesture shown in the picture
         </p>
       </div>
-      <button
-        onClick={onClose}
-        className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-      >
-        <IoMdClose className="h-6 w-6" />
-      </button>
 
-      <div className="mb-20">
-        <img src={verifyImage} className="h-44 w-56 rounded-xl" alt="" />
+      <div className="mb-48">
+        <img
+          src={verifyImage}
+          className="h-48 w-52 rounded-xl aspect-square"
+          alt=""
+        />
       </div>
     </>
   );
@@ -28,22 +31,28 @@ const StepOne = ({ onClose }) => {
 const StepTwo = ({ onClose }) => {
   return (
     <>
-      <div className="w-[80%] space-y-2 mb-5">
-        <p className="text-xl font-bold">Verification</p>
-        <p className="text-secondary text-sm">
+      <div className="flex flex-col w-full mb-6">
+        <div className="flex justify-between items-center mb-3">
+          <p className="text-xl font-bold">Verification</p>
+          <button onClick={onClose} className="text-black">
+            <IoMdClose className="h-8 w-8" />
+          </button>
+        </div>
+        <p className="text-secondary text-sm w-[80%]">
           Are you ready for Verifications ?
         </p>
       </div>
-      <button
-        onClick={onClose}
-        className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-      >
-        <IoMdClose className="h-6 w-6" />
-      </button>
-
-      <div className="mb-20 grid grid-cols-2">
-        <img src={verifyImage} className="h-44 w-56 rounded-xl" alt="" />{" "}
-        <img src={verifyImage} className="h-44 w-56 rounded-xl" alt="" />
+      <div className=" grid grid-cols-2 gap-x-2 mb-48">
+        <img
+          src={verifyImage}
+          className="w-full rounded-xl aspect-square"
+          alt=""
+        />
+        <img
+          src={verifyImage}
+          className="w-full rounded-xl aspect-square"
+          alt=""
+        />
       </div>
     </>
   );

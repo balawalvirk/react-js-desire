@@ -2,13 +2,22 @@ import { IoMdClose } from "react-icons/io";
 import Button from "../../buttons/Button";
 import StandardModal from "../StandardModal";
 import { SettingsIconsCard } from "../../card/Cards";
+import whiteVip from "../../../assets/images/whiteVip.png";
+import redVip from "../../../assets/images/redVip.png";
 const icons = [
-  { title: "Desires", color: "Red", action: "Choose", colorCode: "[#C61323]" },
+  {
+    title: "Desires",
+    color: "Red",
+    action: "Choose",
+    colorCode: "#C61323",
+    icon: <img src={whiteVip} alt="" />,
+  },
   {
     title: "Desires VIP",
     color: "Black",
     action: "Choose",
-    colorCode: "[#221831]",
+    colorCode: "#221831",
+    icon: <img src={redVip} alt="" />,
   },
 ];
 
@@ -39,6 +48,7 @@ const VipIconModal = ({ isOpen, onClose }) => {
               action={i?.action}
               title={i?.title}
               colorCode={i?.colorCode}
+              icon={i?.icon}
             />
           );
         })}

@@ -135,21 +135,15 @@ const Aboutme = ({ onClose }) => {
   return (
     <>
       {renderModal()}
-      <div className="flex justify-between mb-6">
+      <div className="flex items-center justify-between mb-6">
         <div className="w-[80%] ">
-          <p className="text-[20px] font-bold">About Me</p>
+          <p className="text-[20px] font-semibold mb-3">About Me</p>
           <p className="text-secondary text-sm">
             Tell us something more about you
           </p>
         </div>
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-        >
-          <IoMdClose className="h-6 w-6" />
-        </button>
       </div>
-      <div className="grid grid-cols-1 mt-4 space-y-3">
+      <div className="grid grid-cols-1 mt-4 space-y-3 mb-8">
         {about?.map((i) => {
           return (
             <>
@@ -159,7 +153,7 @@ const Aboutme = ({ onClose }) => {
               {i?.tabs?.map((tab, index) => {
                 return (
                   <div
-                    className="flex justify-between rounded-full border border-lightSecondary py-3 px-4 text-[#6A6A6A] "
+                    className="flex cursor-pointer justify-between rounded-full border border-lightSecondary py-3 px-4 text-[#6A6A6A] "
                     onClick={() => {
                       setSelectedTab(tab?.modal);
                       setModal(true);

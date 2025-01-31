@@ -54,7 +54,7 @@ const ProfileInformation = ({ setSelectedView }) => {
           </div>
           <div>
             <div
-              className="size-12 border text-primary border-[#E8E6EA] rounded-full flex items-center justify-center"
+              className="size-12 border text-primary border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
               onClick={() => {
                 setEditModal(true);
               }}
@@ -87,48 +87,107 @@ const ProfileInformation = ({ setSelectedView }) => {
         </div>
         <div>
           <p className="text-[16px] font-semibold mb-3">About Me</p>
-          <div className="grid grid-cols-3 gap-x-2">
-            <Badge label="Gender" value={profileData.gender} />{" "}
-            <Badge label="Available for" value={profileData.availableFor} />
-            <Badge label="Age" value={profileData.age} />{" "}
-            <Badge label="Nationality" value={profileData.nationality} />
-            <Badge label="Ethnicity" value={profileData.ethnicity} />
-            <Badge label="Chest" value={profileData.chest} />
-            <Badge label="Waist" value={profileData.waist} />
-            <Badge label="Hips" value={profileData.hips} />
-            <Badge label="Height" value={profileData.height} />
-            <Badge label="Weight" value={profileData.weight} />
-            <Badge label="Hair Length" value={profileData.hairLength} />
-            <Badge label="Hair Color" value={profileData.hairColor} />
-            <Badge label="Eye Color" value={profileData.eyeColor} />
+          <div className="flex flex-wrap  gap-x-2">
+            <Badge
+              label="Gender"
+              value={profileData.gender}
+              className={"w-auto"}
+            />{" "}
+            <Badge
+              label="Available for"
+              value={profileData.availableFor}
+              className={"w-auto"}
+            />
+            <Badge label="Age" value={profileData.age} className={"w-auto"} />{" "}
+            <Badge
+              label="Nationality"
+              value={profileData.nationality}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Ethnicity"
+              value={profileData.ethnicity}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Chest"
+              value={profileData.chest}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Waist"
+              value={profileData.waist}
+              className={"w-auto"}
+            />
+            <Badge label="Hips" value={profileData.hips} className={"w-auto"} />
+            <Badge
+              label="Height"
+              value={profileData.height}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Weight"
+              value={profileData.weight}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Hair Length"
+              value={profileData.hairLength}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Hair Color"
+              value={profileData.hairColor}
+              className={"w-auto"}
+            />
+            <Badge
+              label="Eye Color"
+              value={profileData.eyeColor}
+              className={"w-auto"}
+            />
           </div>
           <div>
             <h2 className="text-[16px] font-semibold mb-3">
               My Language Skills
             </h2>
-            <Badge label="English" value={profileData.language} />
+            <Badge
+              label="English"
+              value={profileData.language}
+              className={"w-[140px]"}
+            />
           </div>
-          <div>
+          <div className="mt-4">
             <h2 className="text-[16px] font-semibold mb-3">Private Pictures</h2>
             <div className="flex space-x-4">
-              <Badge
-                label="Request"
-                value={profileData.privatePictures.request}
-                handleClick={() => {
+              <div
+                className="border border-[#E8E6EA] rounded-full px-3 py-2 text-sm mb-3 w-auto cursor-pointer"
+                onClick={() => {
                   setSelectedView("requests");
                 }}
-              />
-              <Badge
-                label="Revoke"
-                value={profileData.privatePictures.revoke}
-                handleClick={() => {
+              >
+                <p className="text-[#6A6A6A]">
+                  Request |{" "}
+                  <span className="text-primary">
+                    {profileData.privatePictures.request}
+                  </span>
+                </p>
+              </div>
+              <div
+                className="border border-[#E8E6EA] rounded-full px-3 py-2 text-sm mb-3 w-auto cursor-pointer"
+                onClick={() => {
                   setSelectedView("revoke");
                 }}
-              />
+              >
+                <p className="text-[#6A6A6A]">
+                  Revoke |{" "}
+                  <span className="text-primary">
+                    {profileData.privatePictures.revoke}
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
           <div>
-            <p className="text-[18px] font-semibold mb-3">Private Pictures</p>
             <ProfileActionButton
               btnTitle={"Upload Pictures"}
               cardTitle={"You haven’t uploaded any pictures"}

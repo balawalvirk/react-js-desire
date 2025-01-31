@@ -7,6 +7,7 @@ import CallControls from "./CallControls";
 import { PiCameraRotate } from "react-icons/pi";
 import DropdownMenu from "../../inputs/DropdownMenu";
 import menu from "../../../assets/svgs/menu.svg";
+import expand from "../../../assets/images/Left 3.png";
 const MENU_ITEMS = [
   { id: 1, label: "Effects", action: () => console.log("Send Like clicked") },
   {
@@ -39,14 +40,14 @@ const VideoCallModal = ({ isOpen, onClose }) => {
           <div className="absolute inset-0  top-8 left-8 right-8">
             <div className="flex justify-between">
               <div className="bg-white size-14 rounded-full flex justify-center items-center">
-                <BiExpandAlt size={20} />
+                <img src={expand} size={20} />
               </div>
               <div className="bg-white size-14 rounded-full flex justify-center items-center">
                 <DropdownMenu
                   menuItems={MENU_ITEMS}
                   icon={<img src={menu} alt="menu" />}
                   buttonClassName="bg-white"
-                  dropdownClassName="w-36 rounded-lg shadow-xl"
+                  dropdownClassName="w-36 rounded-lg shadow-xl mt-4"
                   itemClassName="text-[#272829]"
                   onOpen={() => console.log("Dropdown opened")}
                   onClose={() => console.log("Dropdown closed")}

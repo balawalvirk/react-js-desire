@@ -9,17 +9,20 @@ const MyDetails = () => {
       <div className="grid grid-cols-1 mt-4 space-y-3">
         <div className="flex justify-between rounded-full border border-lightSecondary py-4 px-4">
           <div className="flex items-center gap-x-5">
-            <p className="text-primary">LBS</p>
+            <p className="text-primary">lbs</p>
             <span className="text-[#6A6A6A]">|</span>
-            <p className="text-[#6A6A6A]">KG</p>
+            <p className="text-[#6A6A6A]">Kg</p>
           </div>
-          <div className="flex items-center justify-between text-[#6A6A6A]">
-            -------
+          <div className="w-[40px] flex justify-center items-center">
+            <div
+              className={`ms-2 w-full h-[2px] flex-1  bg-gray-200
+                `}
+            ></div>
           </div>
           <div className="flex items-center gap-x-5">
-            <p className="text-primary">CM</p>
+            <p className="text-primary">cm</p>
             <span className="text-[#6A6A6A]">|</span>
-            <p className="text-[#6A6A6A]">Inch</p>
+            <p className="text-[#6A6A6A]">inch</p>
           </div>
         </div>
         <FormInput
@@ -28,12 +31,20 @@ const MyDetails = () => {
           labelClassName={"font-medium text-[14px] "}
           inputClassName={"border border-1 w-full mt-2"}
         />
-        <FormInput
-          placeholder={"Ethan Blake"}
-          label={"Language"}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
+        <label htmlFor="" className="font-medium text-[14px] mx-2">
+          Language
+        </label>
+        <select
+          name=""
+          id=""
+          className="border  mb-3 mt-3 py-3 px-5 block  border-gray-200 rounded-full text-sm text-gray-400"
+        >
+          <option value="">Language</option>
+          <option value="">German</option>
+          <option value="">French</option>
+          <option value="">Spanish</option>
+        </select>
+
         <FormInput
           placeholder={"25"}
           label={"Age"}
@@ -46,44 +57,84 @@ const MyDetails = () => {
           labelClassName={"font-medium text-[14px] "}
           inputClassName={"border border-1 w-full mt-2"}
         />
-        <FormInput
-          placeholder={"Ethan Blake"}
-          label={"Ethnicity "}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
+
+        <label htmlFor="" className="font-medium text-[14px] mx-2">
+          Ethnicity
+        </label>
+        <select
+          name=""
+          id=""
+          className="border  mb-3 mt-3 py-3 px-5 block  border-gray-200 rounded-full text-sm text-gray-400"
+        >
+          <option value="">option1</option>
+          <option value="">option2</option>
+          <option value="">option3</option>
+        </select>
       </div>
+
       <div className="grid grid-cols-2  mt-3 gap-x-2 gap-y-4">
-        <FormInput
-          placeholder={"189"}
-          label={"Height "}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
-        <FormInput
-          placeholder={"89"}
-          label={"Width "}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
-        <FormInput
-          placeholder={"110"}
-          label={"Chest "}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
-        <FormInput
-          placeholder={"90"}
-          label={"Waist "}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
-        <FormInput
-          placeholder={"110"}
-          label={"Hips "}
-          labelClassName={"font-medium text-[14px] "}
-          inputClassName={"border border-1 w-full mt-2"}
-        />
+        <div className="relative">
+          <label htmlFor="" className="font-medium text-[14px] mx-2">
+            Height
+          </label>
+          <input
+            placeholder="189"
+            className={`py-3 px-5 block  border-gray-200 rounded-full text-sm  border border-1 w-full mt-2 relative`}
+          />
+          <p className="text-red-600 text-xs absolute  right-5 top-[46px] font-bold">
+            cm
+          </p>
+        </div>
+
+        <div className="relative">
+          <label htmlFor="" className="font-medium text-[14px] mx-2">
+            Weight
+          </label>
+          <input
+            placeholder="189"
+            className={`py-3 px-5 block  border-gray-200 rounded-full text-sm  border border-1 w-full mt-2 relative`}
+          />
+          <p className="text-red-600 text-xs absolute  right-5 top-[46px] font-bold">
+            kg
+          </p>
+        </div>
+        <div className="relative">
+          <label htmlFor="" className="font-medium text-[14px] mx-2">
+            Chest
+          </label>
+          <input
+            placeholder="110"
+            className={`py-3 px-5 block  border-gray-200 rounded-full text-sm  border border-1 w-full mt-2 relative`}
+          />
+          <p className="text-red-600 text-xs absolute  right-5 top-[46px] font-bold">
+            cm
+          </p>
+        </div>
+        <div className="relative">
+          <label htmlFor="" className="font-medium text-[14px] mx-2">
+            Waist
+          </label>
+          <input
+            placeholder="90"
+            className={`py-3 px-5 block  border-gray-200 rounded-full text-sm  border border-1 w-full mt-2 relative`}
+          />
+          <p className="text-red-600 text-xs absolute  right-5 top-[46px] font-bold">
+            cm
+          </p>
+        </div>
+        <div className="relative">
+          <label htmlFor="" className="font-medium text-[14px] mx-2">
+            Hips
+          </label>
+          <input
+            placeholder="90"
+            className={`py-3 px-5 block  border-gray-200 rounded-full text-sm  border border-1 w-full mt-2 relative`}
+          />
+          <p className="text-red-600 text-xs absolute  right-5 top-[46px] font-bold">
+            cm
+          </p>
+        </div>
+
         <FormInput
           placeholder={"Blue"}
           label={"Eye Color "}

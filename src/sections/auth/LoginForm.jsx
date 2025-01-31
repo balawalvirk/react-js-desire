@@ -1,17 +1,21 @@
 import React from "react";
-import FormInput from "../../components/inputs/FormInput";
-import { MdEmail } from "react-icons/md";
-import Checkbox from "../../components/inputs/Checkbox";
 import Button from "../../components/buttons/Button";
+import Checkbox from "../../components/inputs/Checkbox";
+import FormInput from "../../components/inputs/FormInput";
 import SocialIcon from "../../components/SocialIcon";
 import { userLogin } from "../../redux/actions";
-
+import email from "../../assets/svgs/email.svg";
+import hide from "../../assets/svgs/Hide.svg";
+import { useNavigate } from "react-router-dom";
 const LoginForm = ({ setTab, dispatch }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="mt-4 lg:mt-10">
         <div className="mb-8">
-          <h2 className="text-[18px] lg:text-[30px] font-semibold">Sign In</h2>
+          <h2 className="text-[18px] lg:text-[30px] font-semibold mb-3">
+            Sign In
+          </h2>
           <p className="text-sm lg:text-[#6A6A6A] text-[18px]">
             Enter your email address and password to login.
           </p>
@@ -22,18 +26,19 @@ const LoginForm = ({ setTab, dispatch }) => {
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"dean@dexxire.co |"}
               type={"text"}
-              icon={<MdEmail />}
+              icon={<img src={email} />}
             />
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"Enter Password"}
               type={"text"}
+              icon={<img src={hide} />}
             />
           </div>
           <div className="flex items-center justify-between ">
             <Checkbox label={"Remember me"} />
             <p
-              className="text-red-500 text-xs lg:text-[14px]"
+              className="text-red-500 text-xs lg:text-[14px] cursor-pointer"
               onClick={() => {
                 setTab("Forget");
               }}
@@ -49,13 +54,14 @@ const LoginForm = ({ setTab, dispatch }) => {
             }
             handleClick={() => {
               dispatch(userLogin(true));
+              navigate("/");
             }}
           />
 
-          <div className="flex justify-center items-center mb-4">
-            <div className="h-[1px] bg-[#9EA1AE] w-auto lg:w-[200px]"></div>
+          <div className="flex justify-center items-center mb-4 gap-x-6 text-[#9EA1AE]">
+            <div className="h-[1px] bg-[#9EA1AE] w-auto lg:w-[180px]"></div>
             <span className="text-[#9EA1AE] text-sm">or continue with</span>
-            <div className="h-[1px] bg-[#9EA1AE]  w-auto lg:w-[200px]"></div>
+            <div className="h-[1px] bg-[#9EA1AE]  w-auto lg:w-[180px]"></div>
           </div>
           <SocialIcon />
         </div>

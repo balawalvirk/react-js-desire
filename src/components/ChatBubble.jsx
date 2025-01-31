@@ -1,4 +1,5 @@
 import React from "react";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
 
 const ChatBubble = ({ message, isSender, time }) => {
   return (
@@ -22,10 +23,11 @@ const ChatBubble = ({ message, isSender, time }) => {
         </div>
         <div
           className={`mt-3 ${
-            isSender ? "flex justify-end" : "flex justify-start"
+            isSender ? "flex gap-x-3 justify-end" : "flex gap-x-3 justify-start"
           }`}
         >
           <span className="text-xs text-gray-500">{time}</span>
+          {isSender && <IoCheckmarkDoneOutline className="text-primary" />}
         </div>
       </div>
     </div>

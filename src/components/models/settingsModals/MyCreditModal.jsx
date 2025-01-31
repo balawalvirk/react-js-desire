@@ -4,25 +4,122 @@ import StandardModal from "../StandardModal";
 
 const MyCreditModal = ({ isOpen, onClose }) => {
   const subscriptionData = [
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 50 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 20 },
-    { Date: "12-12-2024, 12:10", Activity: "Boost", Amount: 1 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
-    { Date: "12-12-2024, 12:10", Activity: "Boost", Amount: 1 },
-    { Date: "12-12-2024, 12:10", Activity: "Ghost Mode", Amount: 1 },
-    { Date: "12-12-2024, 12:10", Activity: "Ghost Mode", Amount: 1 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
-    { Date: "12-12-2024, 12:10", Activity: "Invitation", Amount: 30 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 20 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 60 },
-    { Date: "12-12-2024, 12:10", Activity: "Boost", Amount: 10 },
-    { Date: "12-12-2024, 12:10", Activity: "Ghost Mode", Amount: 1 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
-    { Date: "12-12-2024, 12:10", Activity: "Subscription", Amount: 100 },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 50,
+      color: "#13C634",
+    },
+
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 20,
+      color: "#C61323",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Boost",
+      Amount: 1,
+      color: "#C61323",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#C61323",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Boost",
+      Amount: 1,
+      color: "#C61323",
+    },
+
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Ghost Mode",
+      Amount: 1,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Ghost Mode",
+      Amount: 1,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Invitation",
+      Amount: 30,
+      color: "#13C634",
+    },
+
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 20,
+      color: "#C61323",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 60,
+      color: "#C61323",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Boost",
+      Amount: 10,
+      color: "#C61323",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Ghost Mode",
+      Amount: 1,
+      color: "#C61323",
+    },
+
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#13C634",
+    },
+    {
+      Date: "12-12-2024, 12:10",
+      Activity: "Subscription",
+      Amount: 100,
+      color: "#13C634",
+    },
   ];
+
+  console.log(subscriptionData);
+
   return (
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
       <div className="flex justify-between mb-4 lg:mb-6">
@@ -64,14 +161,14 @@ const MyCreditModal = ({ isOpen, onClose }) => {
             </thead>
             <tbody>
               {subscriptionData.map((item, index) => (
-                <tr key={item.id}>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900">
+                <tr key={item.id} className={`text-[${item?.color}]`}>
+                  <td className="px-6 py-2 whitespace-nowrap text-sm ">
                     {item.Date}
                   </td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-600 text-center">
+                  <td className="px-6 py-2 whitespace-nowrap text-sm  text-center">
                     {item.Activity}
                   </td>
-                  <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-2 whitespace-nowrap text-sm  text-right">
                     {item.Amount}
                   </td>
                 </tr>

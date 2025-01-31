@@ -38,18 +38,20 @@ const LifeStyleModal = ({ isOpen, onClose, selectedItems, onSelect }) => {
 
   return (
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
-      <div className="flex justify-between mb-6">
+      <div className="flex items-center justify-between mb-6">
         <p className="text-xl font-bold">LifeStyle</p>
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
-        >
-          <IoMdClose className="h-6 w-6" />
+        <button onClick={onClose} className="text-black">
+          <IoMdClose className="h-8 w-8" />
         </button>
       </div>
       {lifeStyle.map((category) => (
         <div className="mb-3" key={category.title}>
-          <p className="text-lg font-bold">{category.title}</p>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-lg font-semibold">{category?.title}</p>
+            <span className="text-sm text-gray-500">{`${
+              selectedItems[category.title]?.length || 0
+            }/${category.data.length}`}</span>
+          </div>
           <div className="flex flex-wrap">
             {category.data.map((item) => (
               <button

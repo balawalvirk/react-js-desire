@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { IoVolumeMuteOutline } from "react-icons/io5";
 import { LuVideo } from "react-icons/lu";
-import { MdCallEnd } from "react-icons/md";
 import { RxSpeakerLoud } from "react-icons/rx";
+import microphone from "../../../assets/images/Microphone Off.png";
+import videoIcon from "../../../assets/images/Video 2.png";
+import phoneCall from "../../../assets/images/phone-call.png";
 
 const CallControls = () => {
   const [isMuted, setIsMuted] = useState(false);
@@ -35,24 +36,7 @@ const CallControls = () => {
           }`}
           onClick={handleMute}
         >
-          {isMuted ? (
-            <IoVolumeMuteOutline size={20} />
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-gray-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 9v6M12 15l6-6"
-              />
-            </svg>
-          )}
+          <img src={microphone} size={20} />
         </button>
 
         {/* Video On/Off Button */}
@@ -62,7 +46,11 @@ const CallControls = () => {
           }`}
           onClick={handleVideo}
         >
-          {isVideoOn ? <LuVideo size={20} /> : <LuVideo size={20} />}
+          {isVideoOn ? (
+            <img src={videoIcon} size={20} />
+          ) : (
+            <LuVideo size={20} />
+          )}
         </button>
 
         {/* Speakerphone Button */}
@@ -84,7 +72,7 @@ const CallControls = () => {
           className="flex items-center justify-center w-12 h-12 rounded-full bg-red-600"
           onClick={handleEndCall}
         >
-          <MdCallEnd />
+          <img src={phoneCall} />
         </button>
       </div>
     </div>

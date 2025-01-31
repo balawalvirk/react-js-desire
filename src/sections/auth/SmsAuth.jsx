@@ -3,6 +3,7 @@ import { RxChevronLeft } from "react-icons/rx";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import Button from "../../components/buttons/Button";
+import phoneImg from "../../assets/svgs/phone.svg";
 const SmsAuth = ({ setTab }) => {
   const [phone, setPhone] = useState("");
   return (
@@ -19,14 +20,17 @@ const SmsAuth = ({ setTab }) => {
           </h2>
           <p className="text-[#6A6A6A] text-sm lg:text-[18px]">Verification</p>
         </div>
-        <div className="max-w-full max-w-[80%]">
-          <div className="space-y-4 mb-5">
+        <div className=" max-w-[80%]">
+          <div className="space-y-4 mb-5 relative">
             <PhoneInput
               defaultCountry="ua"
               value={phone}
               onChange={(phone) => setPhone(phone)}
-              className="w-full"
+              className="w-full relative"
             />
+            <span className="absolute top-[2px] right-5 text-[#272829]">
+              <img src={phoneImg} alt="" />
+            </span>
           </div>
 
           <Button

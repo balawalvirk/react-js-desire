@@ -1,4 +1,5 @@
 import React from "react";
+import { FaChevronLeft } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
@@ -6,7 +7,7 @@ import apple from "../../assets/images/app.png";
 import playStore from "../../assets/images/appleStore.png";
 import logo from "../../assets/images/dashboardLogo.png";
 import { sidebarLinks } from "../../DummyData";
-const SideBar = ({ routes, toggle, isOpen }) => {
+const SideBar = ({ toggle, isOpen }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -16,6 +17,14 @@ const SideBar = ({ routes, toggle, isOpen }) => {
         isOpen ? "left-0 " : "-left-[100%]"
       } `}
     >
+      <div className="relative">
+        <div
+          className="hidden md:flex rounded-full bg-white size-8 shadow-2xl  justify-center items-center absolute right-[-40px] "
+          onClick={toggle}
+        >
+          <FaChevronLeft />
+        </div>
+      </div>
       <div className="flex justify-between">
         <div className="flex items-center mb-14">
           <img src={logo} alt="" className="w-full" />

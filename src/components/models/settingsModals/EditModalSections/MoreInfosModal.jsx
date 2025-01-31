@@ -44,16 +44,20 @@ const MoreInfosModal = ({ isOpen, onClose, selectedItemsInfo, onSelect }) => {
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
       <div className="flex items-center justify-between mb-4 ">
         <p className="text-xl font-bold">More Info</p>
-        <button
-          onClick={onClose}
-          className=" text-gray-400 hover:text-gray-600"
-        >
-          <IoMdClose className="h-6 w-6" />
+        <button onClick={onClose} className=" text-black">
+          <IoMdClose className="h-8 w-8" />
         </button>
       </div>
       {moreInfos.map((category) => (
         <div className="mb-3" key={category.title}>
-          <p className="text-lg font-bold">{category.title}</p>
+          <div className="flex justify-between items-center">
+            <p className="text-lg font-bold mb-2 flex items-center">
+              {category.title}
+            </p>
+            <span className="text-sm text-gray-500">{`${
+              selectedItemsInfo[category.title]?.length || 0
+            }/${category.data.length}`}</span>
+          </div>
           <div className="flex flex-wrap">
             {category.data.map((item) => (
               <button

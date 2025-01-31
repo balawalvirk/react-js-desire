@@ -33,7 +33,7 @@ const OtpScreen = ({ setTab }) => {
             }
             handleClick={() => setTab("personalInfo")}
           />
-          <p className="text-xs lg:text-[16px] text-center">
+          <p className="text-xs lg:text-[16px] text-center cursor-pointer">
             Didn’t received a code?
             <span className="text-red-500 mx-2 font-bold">Resend Again</span>
           </p>

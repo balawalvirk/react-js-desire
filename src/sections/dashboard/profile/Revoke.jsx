@@ -4,11 +4,11 @@ import { friendsList } from "../../../DummyData";
 
 const Revoke = ({ setSelectedView }) => {
   return (
-    <div className="py-1 px-6">
-      <div className="flex justify-between mb-4">
-        <div className="flex items-center gap-x-3">
+    <div className="py-1 px-6 ">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex  items-center gap-x-3">
           <div
-            className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center"
+            className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
             onClick={() => {
               setSelectedView("profileInformation");
             }}
@@ -18,7 +18,7 @@ const Revoke = ({ setSelectedView }) => {
           <p className="text-normal font-semibold ">Revoke</p>
         </div>
 
-        <div>
+        <div className="flex items-center">
           <input
             type="radio"
             className="size-5 mt-0.5 border-gray-200 rounded-full  "
@@ -27,13 +27,14 @@ const Revoke = ({ setSelectedView }) => {
         </div>
       </div>
 
-      <div>
+      <div className="mt-6">
         {friendsList?.map((i) => (
           <ProfileFriendsListCard
             name={i?.name}
             location={i?.location}
             distance={i?.distance}
             img={i?.image}
+            screen={"revoke"}
           />
         ))}
       </div>

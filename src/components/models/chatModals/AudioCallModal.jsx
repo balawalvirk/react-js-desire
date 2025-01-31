@@ -1,9 +1,22 @@
-import React from "react";
 import { BiExpandAlt } from "react-icons/bi";
-import { CiMenuKebab } from "react-icons/ci";
 import img from "../../../assets/images/vip3.jpeg";
+import menu from "../../../assets/svgs/menu.svg";
+import DropdownMenu from "../../inputs/DropdownMenu";
 import StandardModal from "../StandardModal";
 import CallControls from "./CallControls";
+import expand from "../../../assets/images/Left 3.png";
+const MENU_ITEMS = [
+  {
+    id: 1,
+    label: "Send Message",
+    action: () => console.log("Send Like clicked"),
+  },
+  {
+    id: 2,
+    label: "Convert to Video",
+    action: () => console.log("Share Profile clicked"),
+  },
+];
 const AudioCallModal = ({ isOpen, onClose }) => {
   return (
     <>
@@ -14,13 +27,21 @@ const AudioCallModal = ({ isOpen, onClose }) => {
             alt=""
             className="rounded-xl bg-white/30 blur-lg relative "
           />
-          <div className="absolute inset-0  top-5 left-5 right-5">
+          <div className="absolute inset-0  top-8 left-8 right-8">
             <div className="flex justify-between">
               <div className="bg-white size-14 rounded-full flex justify-center items-center">
-                <BiExpandAlt size={20} />
+                <img src={expand} size={20} />
               </div>
               <div className="bg-white size-14 rounded-full flex justify-center items-center">
-                <CiMenuKebab size={20} />
+                <DropdownMenu
+                  menuItems={MENU_ITEMS}
+                  icon={<img src={menu} alt="menu" />}
+                  buttonClassName="bg-white"
+                  dropdownClassName="w-36 rounded-lg shadow-xl mt-4"
+                  itemClassName="text-[#272829]"
+                  onOpen={() => console.log("Dropdown opened")}
+                  onClose={() => console.log("Dropdown closed")}
+                />
               </div>
             </div>
           </div>

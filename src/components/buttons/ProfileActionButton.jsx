@@ -10,7 +10,7 @@ const ProfileActionButton = ({ cardTitle, btnTitle, handleClick }) => {
         <Button
           text={btnTitle}
           btnClassName={
-            "rounded-full bg-[#C61323] text-white w-[60%] text-center py-3 my-2"
+            "rounded-full bg-[#C61323] text-white w-full md:w-[60%] text-center py-3 my-2"
           }
         />
       </div>

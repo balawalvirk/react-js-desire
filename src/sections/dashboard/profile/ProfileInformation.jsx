@@ -28,7 +28,7 @@ const ProfileInformation = ({ setSelectedView }) => {
     privatePictures: { request: 2, revoke: 3 },
   };
   return (
-    <div className="p-3 lg:p-5">
+    <div className="">
       <VerifyProfileModal
         isOpen={modal}
         onClose={(prev) => {
@@ -41,11 +41,11 @@ const ProfileInformation = ({ setSelectedView }) => {
           setEditModal(!editModal);
         }}
       />
-      <div className="size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center">
+      <div className="mb-2 md:mb-0 size-10 md:size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center">
         <RxChevronLeft size={30} />
       </div>
-      <div className="w-1/2 mx-auto">
-        <img src={image} className="size-52 rounded-2xl mb-5" alt="" />
+      <div className="w-full md:w-1/2 mx-auto">
+        <img src={image} className="md:size-52 rounded-2xl mb-5" alt="" />
 
         <div className="flex justify-between items-center mb-5">
           <div className="space-y-1">
@@ -54,7 +54,7 @@ const ProfileInformation = ({ setSelectedView }) => {
           </div>
           <div>
             <div
-              className="size-12 border text-primary border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
+              className="size-10 md:size-12 border text-primary border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
               onClick={() => {
                 setEditModal(true);
               }}
@@ -63,17 +63,16 @@ const ProfileInformation = ({ setSelectedView }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between items-center">
+        <div className="md:flex justify-between items-center">
           <div className="space-y-1">
             <p className="text-[18px] font-semibold">Location</p>
             <p className="text-sm text-[#9EA1AE]">
               2177 Marigold Lane, United States
             </p>
           </div>
-          <div>
-            <div className="px-2 py-2 border text-secondary border-[#E8E6EA] rounded-full flex items-center justify-center">
-              <CiLocationOn /> 12 km
-            </div>
+
+          <div className="px-2 py-2 mb-4 md:mb-0 border text-secondary border-[#E8E6EA] rounded-full flex items-center justify-center">
+            <CiLocationOn /> 12 km
           </div>
         </div>
         <div className="my-5">

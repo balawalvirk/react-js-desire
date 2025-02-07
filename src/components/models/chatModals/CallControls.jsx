@@ -27,7 +27,7 @@ const CallControls = () => {
   };
 
   return (
-    <div className="absolute bottom-10 left-0 right-0 bg-[#3737374D] text-white backdrop-filter backdrop-blur-sm py-8 px-4 rounded-2xl">
+    <div className="absolute bottom-4 md:bottom-10 left-0 right-0 bg-[#3737374D] text-white backdrop-filter backdrop-blur-sm py-3 md:py-8 px-4 rounded-2xl">
       <div className="flex justify-between items-center">
         {/* Mute/Unmute Button */}
         <button

@@ -38,9 +38,9 @@ export default function HotNotSlider({ data }) {
                 <div
                   className={`absolute ${
                     item?.type === "hot" ? "hotnotbg" : ""
-                  } inset-0 flex flex-col justify-end  bg-gradient-to-t from-black via-transparent to-transparent text-white p-4 rounded-md`}
+                  } inset-0 flex flex-col justify-end  bg-gradient-to-t from-black via-transparent to-transparent text-white py-2 md:p-4 rounded-md`}
                 >
-                  <div className="mb-16 px-8">
+                  <div className="mb-12 md:mb-16 px-8">
                     <div>
                       <div className="flex justify-between">
                         <div>
@@ -55,9 +55,9 @@ export default function HotNotSlider({ data }) {
                       <p className="text-sm">{item.city}</p>
                     </div>
 
-                    <div className="mt-2 mb-5 flex gap-x-3">
+                    <div className="mt-2 md:mb-5 flex gap-x-3">
                       {item.interests.map((interest, idx) => (
-                        <button className="bg-white text-black rounded-full text-sm px-4 py-2">
+                        <button className="bg-white text-black rounded-full text-xs md:text-sm px-4 py-2">
                           {interest}
                         </button>
                       ))}
@@ -73,13 +73,13 @@ export default function HotNotSlider({ data }) {
                 </div>
                 <div className="flex items-center justify-between px-6 py-3 w-full absolute bottom-0 z-30 text-3xl">
                   <div>
-                    <img src={like} alt="" />
+                    <img src={like} className="size-10 md:size-auto" alt="" />
                   </div>
                   <div>
                     <img className="rotate-12" src={circle} alt="" />
                   </div>
                   <div>
-                    <div className="bg-white text-black rounded-full size-14 flex items-center justify-center">
+                    <div className="bg-white text-black rounded-full size-8 lg:size-14 flex items-center justify-center">
                       <RxCross1 />
                     </div>
                   </div>

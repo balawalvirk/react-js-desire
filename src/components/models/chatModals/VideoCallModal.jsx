@@ -39,14 +39,14 @@ const VideoCallModal = ({ isOpen, onClose }) => {
           />
           <div className="absolute inset-0  top-8 left-8 right-8">
             <div className="flex justify-between">
-              <div className="bg-white size-14 rounded-full flex justify-center items-center">
+              <div className="bg-white size-10 md:size-14 rounded-full flex justify-center items-center">
                 <img src={expand} size={20} />
               </div>
-              <div className="bg-white size-14 rounded-full flex justify-center items-center">
+              <div className="bg-white size-10 md:size-14 rounded-full flex justify-center items-center">
                 <DropdownMenu
                   menuItems={MENU_ITEMS}
                   icon={<img src={menu} alt="menu" />}
-                  buttonClassName="bg-white"
+                  buttonClassName=""
                   dropdownClassName="w-36 rounded-lg shadow-xl mt-4"
                   itemClassName="text-[#272829]"
                   onOpen={() => console.log("Dropdown opened")}
@@ -55,11 +55,11 @@ const VideoCallModal = ({ isOpen, onClose }) => {
               </div>
             </div>
           </div>
-          <div className="absolute inset-0 top-28 left-8">
+          <div className="absolute inset-0 top-20 md:top-28 left-4 md:left-8">
             <div className="relative inline-block">
               <img
                 src={img}
-                className="h-36 w-36 rounded-3xl border-2 border-white"
+                className="h-24 w-24 md:h-36 md:w-36 rounded-3xl border-2 border-white"
                 alt="Profile"
               />
               <span className="absolute bottom-3 right-3  p-1 rounded-full">
@@ -67,13 +67,13 @@ const VideoCallModal = ({ isOpen, onClose }) => {
               </span>
             </div>
           </div>
-          <div className="absolute inset-0 size-44 top-2/4 left-1/3">
-            <p className="text-white text-2xl font-bold text-center">
+          <div className="absolute inset-0 size-28 md:size-44 top-[55%] md:top-2/4 left-1/3">
+            <p className="text-white text-sm md:text-2xl font-bold text-center">
               Miracle Addi
             </p>
             <p className="text-medium text-center text-[#FFFFFF]">00:03:48</p>
           </div>
-          <div className="absolute w-[50%] bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center">
+          <div className="absolute w-[80%] md:w-[50%] bottom-0 md:bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center">
             <CallControls />
           </div>
         </div>

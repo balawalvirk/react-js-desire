@@ -7,7 +7,7 @@ const MyDetails = () => {
         <p className="text-secondary text-sm">2 Factor Authentication</p>
       </div>
       <div className="grid grid-cols-1 mt-4 space-y-3">
-        <div className="flex justify-between rounded-full border border-lightSecondary py-4 px-4">
+        <div className="flex justify-between rounded-full border border-lightSecondary py-4 px-2 md:px-4">
           <div className="flex items-center gap-x-5">
             <p className="text-primary">lbs</p>
             <span className="text-[#6A6A6A]">|</span>
@@ -72,7 +72,7 @@ const MyDetails = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-2  mt-3 gap-x-2 gap-y-4">
+      <div className="grid md:grid-cols-2  mt-3 gap-x-2 gap-y-4">
         <div className="relative">
           <label htmlFor="" className="font-medium text-[14px] mx-2">
             Height

@@ -5,10 +5,7 @@ import {
   Marker,
   Autocomplete,
 } from "@react-google-maps/api";
-import { GoStopwatch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
-import { IoLocationSharp } from "react-icons/io5";
-import { TbArrowCurveRight } from "react-icons/tb";
 import StandardModal from "../StandardModal";
 
 const mapContainerStyle = {
@@ -16,15 +13,15 @@ const mapContainerStyle = {
   height: "300px",
 };
 
-const center = {
+const defaultCenter = {
   lat: 37.7749,
   lng: -122.4194,
 };
 
-const PlaceOfResidenceModal = ({ isOpen, onClose }) => {
-  const [selectedLocation, setSelectedLocation] = useState(center);
+const PlaceOfResidenceModal = ({ isOpen, onClose, onSelectLocation }) => {
+  const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "YOUR_GOOGLE_MAPS_API_KEY",
+    googleMapsApiKey: "AIzaSyADMSrJ7cO5UoFG_1PwGU3OHwU4v6Ju7eA",
     libraries: ["places"],
   });
 
@@ -33,10 +30,12 @@ const PlaceOfResidenceModal = ({ isOpen, onClose }) => {
   const handlePlaceSelect = () => {
     const place = autocompleteRef.current.getPlace();
     if (place && place.geometry) {
-      setSelectedLocation({
+      const newLocation = {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng(),
-      });
+      };
+      setSelectedLocation(newLocation);
+      onSelectLocation(newLocation); // Pass new location to AroundMe
     }
   };
 
@@ -62,7 +61,7 @@ const PlaceOfResidenceModal = ({ isOpen, onClose }) => {
             onPlaceChanged={handlePlaceSelect}
           >
             <input
-              className="w-full border border-[#F3F4F9] h-[50px] px-3"
+              className="w-full rounded-full border border-[#F3F4F9] h-[50px] px-2 md:px-3"
               placeholder="Search a location"
               type="text"
             />

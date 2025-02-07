@@ -48,7 +48,7 @@ const StandardModal = ({ isOpen, onClose, children, size = "xl" }) => {
       aria-labelledby="modal-title"
     >
       <div
-        className={`relative w-full ${sizeClass} max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-6 shadow-lg`}
+        className={`relative w-full ${sizeClass} max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-3 md:p-6 shadow-lg`}
       >
         {children}
       </div>

@@ -70,7 +70,7 @@ const Chat = () => {
 
     return (
         <>
-            <div className="py-6 px-6">
+            <div className="py-6 px-3 md:px-6">
                 <AudioCallModal isOpen={audioCall} onClose={(prev) => {
                     setAudioCall(!prev)
                 }} />
@@ -122,7 +122,7 @@ const Chat = () => {
 
                 </div>
                 <div>
-                    <div className="p-4">
+                    <div className="p-2 md:p-4">
                         <div className="flex flex-col space-y-2 mb-20">
                             {messages.map((message, index) => (
                                 <ChatBubble
@@ -138,20 +138,20 @@ const Chat = () => {
                         <form onSubmit={handleSubmit} className=" p-2 flex items-center relative ">
                             <input
                                 type="text"
-                                placeholder="Your message"
+                                placeholder="Type..."
                                 value={newMessage}
                                 onChange={(e) => setNewMessage(e.target.value)}
-                                className="flex-grow px-4 py-4  border border-gray-200 mr-2 relative  rounded-full"
+                                className="flex-grow px-2 md:px-4 py-2 md:py-4  border border-gray-200 mr-2 relative  rounded-full"
                             />
-                            <div className="absolute right-16">
+                            <div className="absolute right-14 md:right-16">
                                 <div className="flex gap-x-3"><img src={happy} />
                                     <img src={attachment} size={20} className="text-gray-500 mr-2" />
-                                    <button type="button" className="bg-black border border-lightSecondary rounded-full p-4">
+                                    <button type="button" className="bg-black border border-lightSecondary rounded-full p-2 md:p-4">
                                         <img src={send} size={20} className="text-primary" />
                                     </button>
                                 </div>
                             </div>
-                            <button type="submit" className="bg-white border border-lightSecondary rounded-full p-4">
+                            <button type="submit" className="bg-white border border-lightSecondary rounded-full p-2 md:p-4">
                                 <FaMicrophone size={20} className="text-primary" />
                             </button>
                         </form>

@@ -4,34 +4,42 @@ import SideBar from "../components/globals/SideBar";
 import { FaAlignJustify } from "react-icons/fa";
 
 const AdminLayout = ({ routes }) => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);  // Default to closed for better UX
+    const [blur, setBlur] = useState(false);
+
     const toggle = () => setIsOpen((prev) => !prev);
-    const [blur, setBlur] = useState(false)
+
     useEffect(() => {
-        window.addEventListener('modal-open', (e) => {
-            setBlur(e.detail.modal_open)
-        })
-    }, [window])
+        const handleModalOpen = (e) => setBlur(e.detail.modal_open);
+        window.addEventListener("modal-open", handleModalOpen);
+
+        return () => window.removeEventListener("modal-open", handleModalOpen);
+    }, []);
 
     return (
         <>
-            <div className={`${blur ? "h-screen w-screen backdrop-blur-sm fixed bg-[#EECD591A]/20 z-[1200]" : ""}`}></div>
-            <div className={`flex h-screen `}>
-                <SideBar routes={routes} toggle={toggle} isOpen={isOpen} />
+            {blur && (
+                <div className="fixed inset-0 backdrop-blur-sm bg-[#EECD591A]/20 z-[1200]"></div>
+            )}
+            <div className="flex h-screen relative">
+                {/* Sidebar Overlay for Mobile Click to Close */}
+                {isOpen && (
+                    <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={toggle}></div>
+                )}
 
-                <div className=" w-full relative overflow-y-scroll">
-                    {
-                        !isOpen && <FaAlignJustify size={30} className="block md:hidden m-2 cursor-pointer" onClick={toggle} />
-                    }
+                {/* Sidebar */}
+                <SideBar toggle={toggle} isOpen={isOpen} />
+
+                {/* Main Content */}
+                <div className="w-full relative overflow-y-scroll">
+                    {!isOpen && (
+                        <FaAlignJustify size={30} className="block md:hidden m-2 cursor-pointer" onClick={toggle} />
+                    )}
                     <Routes>
-                        {routes?.map((item, key) => {
-                            let Component = item?.component;
-                            return (
-                                <Route key={key} path={item?.path} element={<Component />} />
-                            );
-                        })}
+                        {routes?.map((item, key) => (
+                            <Route key={key} path={item?.path} element={<item.component />} />
+                        ))}
                     </Routes>
-
                 </div>
             </div>
         </>

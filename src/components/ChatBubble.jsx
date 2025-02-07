@@ -13,13 +13,13 @@ const ChatBubble = ({ message, isSender, time }) => {
           {/* Optional: Display sender's avatar here */}
         </div>
       )}
-      <div className="flex flex-col">
+      <div className="flex flex-col md:w-1/3">
         <div
-          className={`px-4 py-2 rounded-lg ${
+          className={`px-4 py-2 rounded-lg  ${
             isSender ? "bg-[#272829] text-white" : "bg-gray-100 text-gray-700"
           }`}
         >
-          <p className="text-sm">{message}</p>
+          <p className="text-sm p-2">{message}</p>
         </div>
         <div
           className={`mt-3 ${

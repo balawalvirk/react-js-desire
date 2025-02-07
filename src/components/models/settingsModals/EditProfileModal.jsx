@@ -29,7 +29,7 @@ const Stepper = ({ view }) => {
             className={`  group ${steps?.length - 1 ? "justify-end" : ""}`}
             key={index}
           >
-            <div className="min-w-7 min-h-7 w-full inline-flex items-center justify-start text-xs align-middle">
+            <div className="min-w-7 min-h-7 w-full inline-flex items-center justify-center text-xs align-middle">
               <span
                 className={`size-7 flex justify-center items-center shrink-0 ${
                   view === i?.step ? "bg-primary text-white" : "bg-gray-200"
@@ -38,14 +38,14 @@ const Stepper = ({ view }) => {
                 {i?.step}
               </span>
               <div
-                className={`ms-2 w-[155px] h-px  group-last:hidden ${
+                className={`ms-2 w-[160px] h-px  group-last:hidden ${
                   view === i?.step ? "bg-primary  " : "bg-gray-200"
                 }`}
               ></div>
             </div>
             <div className="mt-3">
               <span
-                className={`block  text-[12px] font-medium  ${
+                className={`block   text-[12px] font-medium  ${
                   view === i?.step ? "text-primary " : "text-gray-800"
                 }`}
               >
@@ -83,7 +83,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
           <IoMdClose className="h-8 w-8" />
         </button>
       </div>
-      <div className="my-8">
+      <div>
         <Stepper view={view} />
       </div>
       <div>{renderItems()}</div>

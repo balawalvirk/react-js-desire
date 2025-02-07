@@ -5,7 +5,7 @@ import FriendsScreenHeader from "../../components/FriendsScreenHeader";
 
 const RequestsSent = () => {
   return (
-    <div className="py-1 px-6">
+    <div className="py-1 px-3 md:px-6">
       <FriendsScreenHeader title={"Requests Sent (03)"} />
       <div>
         {friendsList?.map((i) => (

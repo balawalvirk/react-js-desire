@@ -77,7 +77,7 @@ const SearchFilterModal = ({
                   width: "25px",
                 }}
                 inputStyle={{
-                  minWidth: "100% ",
+                  minWidth: "100%",
                 }}
                 showLabels={false}
               />

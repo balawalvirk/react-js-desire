@@ -66,8 +66,11 @@
 .gmap-container > div {
   pointer-events: auto !important;
 }
-
-
+.rsbContainer  {
+  width: 100% !important;
+  color: white !important;
+}
+ 
 /* .swiper-slide:nth-child(1n) {
   background-color: rgb(206, 17, 17);
 }

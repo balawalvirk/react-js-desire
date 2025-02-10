@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { RxChevronLeft } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
@@ -53,6 +53,8 @@ const Chat = () => {
             time: '2:12 PM',
         },
     ]);
+
+
     const [audioCall, setAudioCall] = useState(false)
     const [videoCall, setVideoCall] = useState(false)
     const [newMessage, setNewMessage] = useState('');
@@ -67,6 +69,32 @@ const Chat = () => {
         ]);
         setNewMessage('');
     };
+
+    const [isTyping, setIsTyping] = useState(false);
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        const handleInputChange = () => {
+            setIsTyping(newMessage.trim() !== '');
+        };
+
+        if (inputRef.current) {
+            inputRef.current.addEventListener('input', handleInputChange);
+        }
+
+        return () => {
+            if (inputRef.current) {
+                inputRef.current.removeEventListener('input', handleInputChange);
+            }
+        };
+    }, [newMessage]);
+
+    useEffect(() => {
+        if (newMessage === '') {
+            setIsTyping(false)
+        }
+    }, [newMessage])
+
 
     return (
         <>
@@ -134,27 +162,39 @@ const Chat = () => {
                             ))}
                         </div>
 
+                        <div className="relative">
 
-                        <form onSubmit={handleSubmit} className=" p-2 flex items-center relative ">
-                            <input
-                                type="text"
-                                placeholder="Type..."
-                                value={newMessage}
-                                onChange={(e) => setNewMessage(e.target.value)}
-                                className="flex-grow px-2 md:px-4 py-2 md:py-4  border border-gray-200 mr-2 relative  rounded-full"
-                            />
-                            <div className="absolute right-14 md:right-16">
-                                <div className="flex gap-x-3"><img src={happy} />
-                                    <img src={attachment} size={20} className="text-gray-500 mr-2" />
-                                    <button type="button" className="bg-black border border-lightSecondary rounded-full p-2 md:p-4">
-                                        <img src={send} size={20} className="text-primary" />
-                                    </button>
-                                </div>
+                            <div className="ml-6">
+                                {isTyping && (
+                                    <div className="inline-flex p-3 rounded-lg space-x-2 bg-[#E6E6E6] ">
+                                        <div className="w-3 h-3 rounded-full bg-[#181818] animate-pulse"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#464a4d] animate-bounce"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#65666b] animate-bounce"></div>
+                                    </div>
+                                )}
                             </div>
-                            <button type="submit" className="bg-white border border-lightSecondary rounded-full p-2 md:p-4">
-                                <FaMicrophone size={20} className="text-primary" />
-                            </button>
-                        </form>
+                            <form onSubmit={handleSubmit} className=" p-2 flex items-center relative ">
+                                <input
+                                    ref={inputRef}
+                                    type="text"
+                                    placeholder="Type..."
+                                    value={newMessage}
+                                    onChange={(e) => setNewMessage(e.target.value)}
+                                    className="flex-grow px-2 md:px-4 py-2 md:py-4  border border-gray-200 mr-2 relative  rounded-full"
+                                />
+                                <div className="absolute right-14 md:right-16">
+                                    <div className="flex gap-x-3"><img src={happy} />
+                                        <img src={attachment} size={20} className="text-gray-500 mr-2" />
+                                        <button type="button" className="bg-black border border-lightSecondary rounded-full p-2 md:p-4">
+                                            <img src={send} size={20} className="text-primary" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="submit" className="bg-white border border-lightSecondary rounded-full p-2 md:p-4">
+                                    <FaMicrophone size={20} className="text-primary" />
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

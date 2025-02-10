@@ -27,7 +27,7 @@ const Friends = () => {
     return (
         <div className="p-3 lg:p-5">
             <InviteFriendsModal isOpen={isOpen} onClose={(prev) => setIsOpen(!prev)} />
-            <div className="flex justify-between items-center ">
+            <div className="flex justify-between items-center ml-3">
                 <p className="text-xl font-semibold ">Friends</p>
                 <DropdownMenu
                     menuItems={menuItems}

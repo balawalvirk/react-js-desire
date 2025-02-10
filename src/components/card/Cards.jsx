@@ -109,7 +109,7 @@ const FriendListCard = ({
               menuItems={MESSAGE_SCREEN_ITEMS}
               icon={<img src={menu} alt="menu" className="size-5  lg:size-6" />}
               buttonClassName="bg-white"
-              dropdownClassName="w-36 rounded-lg shadow-xl"
+              dropdownClassName="w-[160px] rounded-xl shadow-xl"
               itemClassName="text-black"
               onOpen={() => console.log("Dropdown opened")}
               onClose={() => console.log("Dropdown closed")}

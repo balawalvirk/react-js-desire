@@ -2,11 +2,12 @@ import React from "react";
 import { profiles } from "../../../DummyData";
 import { UserProfileCard } from "../../../components/card/Cards";
 import rotate from "../../../assets/svgs/rotate.svg";
+import ProfileHeader from "./ProfileHeader";
 const VipProfiles = () => {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="text-[24px] font-semibold mb-5 ">VIP Profiles</h1>
+        <ProfileHeader title={"VIP Profiles"} />
         <div className="flex items-center gap-x-2">
           <img src={rotate} alt="" />
           <p className="text-primary cursor-pointer">Load More</p>

@@ -7,9 +7,11 @@ import { Badge } from "../../../components/badge/Badges";
 import ProfileActionButton from "../../../components/buttons/ProfileActionButton";
 import VerifyProfileModal from "../../../components/models/settingsModals/VerifyProfileModal";
 import EditProfileModal from "../../../components/models/settingsModals/EditProfileModal";
+import { useNavigate } from "react-router-dom";
 const ProfileInformation = ({ setSelectedView }) => {
   const [modal, setModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const navigate = useNavigate();
   const profileData = {
     gender: "Male",
     availableFor: "Girls",
@@ -41,11 +43,16 @@ const ProfileInformation = ({ setSelectedView }) => {
           setEditModal(!editModal);
         }}
       />
-      <div className="mb-2 md:mb-0 size-10 md:size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center">
+      <div
+        className="mb-2 md:mb-0 size-10 md:size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
         <RxChevronLeft size={30} />
       </div>
       <div className="w-full md:w-1/2 mx-auto">
-        <img src={image} className="md:size-52 rounded-2xl mb-5" alt="" />
+        <img src={image} className="aspect-16-9 rounded-2xl mb-5 " alt="" />
 
         <div className="flex justify-between items-center mb-5">
           <div className="space-y-1">
@@ -82,6 +89,43 @@ const ProfileInformation = ({ setSelectedView }) => {
             handleClick={() => {
               setModal(true);
             }}
+          />
+        </div>
+        <div className="mt-4">
+          <h2 className="text-[16px] font-semibold mb-3">Private Pictures</h2>
+          <div className="flex space-x-4">
+            <div
+              className="border border-[#E8E6EA] rounded-full px-3 py-2 text-sm mb-3 w-auto cursor-pointer"
+              onClick={() => {
+                setSelectedView("requests");
+              }}
+            >
+              <p className="text-[#6A6A6A]">
+                Request |{" "}
+                <span className="text-primary">
+                  {profileData.privatePictures.request}
+                </span>
+              </p>
+            </div>
+            <div
+              className="border border-[#E8E6EA] rounded-full px-3 py-2 text-sm mb-3 w-auto cursor-pointer"
+              onClick={() => {
+                setSelectedView("revoke");
+              }}
+            >
+              <p className="text-[#6A6A6A]">
+                Revoke |{" "}
+                <span className="text-primary">
+                  {profileData.privatePictures.revoke}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mb-3">
+          <ProfileActionButton
+            btnTitle={"Upload Pictures"}
+            cardTitle={"You haven’t uploaded any pictures"}
           />
         </div>
         <div>
@@ -153,43 +197,6 @@ const ProfileInformation = ({ setSelectedView }) => {
               label="English"
               value={profileData.language}
               className={"w-[140px]"}
-            />
-          </div>
-          <div className="mt-4">
-            <h2 className="text-[16px] font-semibold mb-3">Private Pictures</h2>
-            <div className="flex space-x-4">
-              <div
-                className="border border-[#E8E6EA] rounded-full px-3 py-2 text-sm mb-3 w-auto cursor-pointer"
-                onClick={() => {
-                  setSelectedView("requests");
-                }}
-              >
-                <p className="text-[#6A6A6A]">
-                  Request |{" "}
-                  <span className="text-primary">
-                    {profileData.privatePictures.request}
-                  </span>
-                </p>
-              </div>
-              <div
-                className="border border-[#E8E6EA] rounded-full px-3 py-2 text-sm mb-3 w-auto cursor-pointer"
-                onClick={() => {
-                  setSelectedView("revoke");
-                }}
-              >
-                <p className="text-[#6A6A6A]">
-                  Revoke |{" "}
-                  <span className="text-primary">
-                    {profileData.privatePictures.revoke}
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <ProfileActionButton
-              btnTitle={"Upload Pictures"}
-              cardTitle={"You haven’t uploaded any pictures"}
             />
           </div>
         </div>

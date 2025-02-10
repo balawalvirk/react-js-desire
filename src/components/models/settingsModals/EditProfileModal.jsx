@@ -22,14 +22,11 @@ const Stepper = ({ view }) => {
     },
   ];
   return (
-    <ul className="relative flex justify-between w-full ">
+    <ul className="relative flex justify-between min-w-full ">
       {steps?.map((i, index) => {
         return (
-          <li
-            className={`  group ${steps?.length - 1 ? "justify-end" : ""}`}
-            key={index}
-          >
-            <div className="min-w-7 min-h-7 w-full inline-flex items-center justify-center text-xs align-middle">
+          <li className={`  group `} key={index}>
+            <div className="min-w-7 min-h-7 w-full flex items-center justify-center text-xs ">
               <span
                 className={`size-7 flex justify-center items-center shrink-0 ${
                   view === i?.step ? "bg-primary text-white" : "bg-gray-200"
@@ -38,14 +35,14 @@ const Stepper = ({ view }) => {
                 {i?.step}
               </span>
               <div
-                className={`ms-2 w-[160px] h-px  group-last:hidden ${
+                className={` w-[5.5rem]  md:w-[175px]  h-px  group-last:hidden ${
                   view === i?.step ? "bg-primary  " : "bg-gray-200"
                 }`}
               ></div>
             </div>
             <div className="mt-3">
               <span
-                className={`block   text-[12px] font-medium  ${
+                className={`block   text-[10px] md:text-[12px] font-medium  ${
                   view === i?.step ? "text-primary " : "text-gray-800"
                 }`}
               >
@@ -79,7 +76,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
         <div className="w-[80%] ">
           <p className="text-[20px] font-bold">Edit Profile</p>
         </div>
-        <button onClick={onClose} className=" text-black">
+        <button onClick={onClose} className=" text-black mx-2">
           <IoMdClose className="h-8 w-8" />
         </button>
       </div>

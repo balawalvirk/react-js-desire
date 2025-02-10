@@ -13,6 +13,10 @@ module.exports = {
         'secondary': "#74747E",
         'lightSecondary': '#E8E6EA',
 
+      },
+      spacing: {
+        'aspect-16-9': '56.25%', // (9/16)*100%
+
       }
 
     },

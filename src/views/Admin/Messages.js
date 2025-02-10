@@ -11,8 +11,8 @@ const Messages = () => {
     );
 
     return (
-        <div className="p-3 lg:p-8">
-            <div className="flex justify-between items-center mb-12">
+        <div className="p-3 lg:p-6">
+            <div className="flex justify-between items-center mb-12 ml-3 ">
                 <p className="font-semibold text-xl">Messages</p>
                 <div className="size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer">
                     <img src={search} size={30} />

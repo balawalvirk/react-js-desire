@@ -1,12 +1,14 @@
-import React from 'react'
-import HotNotSlider from '../../sections/dashboard/hotOrNot/HotNotSlider'
-import hotnot from '../../assets/images/hotnot.png'
-import refresh from '../../assets/images/refresh.png'
-import Button from '../../components/buttons/Button'
+import React, { useState } from 'react';
+import HotNotSlider from '../../sections/dashboard/hotOrNot/HotNotSlider';
+import hotnot from '../../assets/images/hotnot.png';
+import refresh from '../../assets/images/refresh.png';
+import Button from '../../components/buttons/Button';
 import heart from "../../assets/svgs/Heart 1.svg";
 import filtericon from "../../assets/svgs/Filter 5.svg";
 import search from "../../assets/svgs/search-normal.svg";
-import Icon from '../../components/icons/Icon'
+import Icon from '../../components/icons/Icon';
+import PlaceOfResidenceModal from '../../components/models/settingsModals/PlaceOfResidenceModal';
+
 const data = [
     {
         name: 'Kaiya Baptista',
@@ -24,16 +26,6 @@ const data = [
         img: hotnot,
         city: 'Las Vegas, NV',
         type: 'hot'
-
-    },
-    {
-        name: 'Kaiya Baptista',
-        age: '27',
-        location: '2 km',
-        interests: ['Soccer Group', 'Traveling'],
-        city: 'Las Vegas, NV',
-
-        img: hotnot
     },
     {
         name: 'Kaiya Baptista',
@@ -42,97 +34,63 @@ const data = [
         interests: ['Soccer Group', 'Traveling'],
         img: hotnot,
         city: 'Las Vegas, NV',
-        type: 'hot'
-
-    },
-    {
-        name: 'Kaiya Baptista',
-        age: '27',
-        location: '2 km',
-        interests: ['Soccer Group', 'Traveling'],
-        img: hotnot,
-        city: 'Las Vegas, NV',
-        type: 'hot'
-
-    },
-
-
-    {
-        name: 'Kaiya Baptista',
-        age: '27',
-        location: '2 km',
-        interests: ['Soccer Group', 'Traveling'],
-        img: hotnot,
-        city: 'Las Vegas, NV',
-        type: 'hot'
-
-    },
-    {
-        name: 'Kaiya Baptista',
-        age: '27',
-        location: '2 km',
-        interests: ['Soccer Group', 'Traveling'],
-        img: hotnot,
-        city: 'Las Vegas, NV'
-
-    },
-    {
-        name: 'Kaiya Baptista',
-        age: '27',
-        location: '2 km',
-        interests: ['Soccer Group', 'Traveling'],
-        img: hotnot,
-        city: 'Las Vegas, NV'
-
-    },
-    {
-        name: 'Kaiya Baptista',
-        age: '27',
-        location: '2 km',
-        interests: ['Soccer Group', 'Traveling'],
-        img: hotnot,
-        city: 'Las Vegas, NV'
-
     }
-]
-const RefreshScreen = () => {
+];
+
+const RefreshScreen = ({ onRefresh }) => {
     return (
         <div className="flex flex-col justify-center items-center h-[90vh] ">
-            <img src={refresh} alt="" />
-            <p className="text-normal text-[#9EA1AE] text-center">No users found, Press refresh button <br />
-                below to see more profiles</p>
+            <img src={refresh} alt="Refresh Icon" />
+            <p className="text-normal text-[#9EA1AE] text-center">
+                No users found, Press refresh button <br />
+                below to see more profiles
+            </p>
             <div>
                 <Button
-                    text={"Refresh"}
-                    btnClassName={
-                        "rounded-full bg-[#C61323] text-white w-[400px] text-center py-3 my-8"
-                    }
-
+                    text="Refresh"
+                    btnClassName="rounded-full bg-[#C61323] text-white w-[400px] text-center py-3 my-8"
+                    handleClick={onRefresh}
                 />
             </div>
         </div>
-    )
-}
+    );
+};
+const defaultCenter = {
+    lat: 37.7749,
+    lng: -122.4194,
+};
+
 const HotOrNot = () => {
+    const [showSlider, setShowSlider] = useState(false);
+    const [modal, setModal] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
+
     return (
         <div className="p-3 lg:p-5">
-            <div className="flex justify-between items-center ">
+            <PlaceOfResidenceModal
+                isOpen={modal}
+                onClose={() => setModal(false)}
+                onSelectLocation={setSelectedLocation}
+            />
+            <div className="flex justify-between items-center mt-2 mx-3">
                 <p className="text-lg font-semibold text-[25px]">Hot Or Not</p>
 
                 <div className="flex mx-5">
-                    <Icon className={"bg-white"} icon={<img alt="" src={search} />} />
-                    <Icon className={"bg-white"} icon={<img alt="" src={filtericon} />} />
-                    <Icon className={"bg-white"} icon={<img alt="" src={heart} />} />
+                    <Icon className="bg-white" handleClick={() => {
+                        setModal(true)
+                    }} icon={<img alt="Search" src={search} />} />
+                    <Icon className="bg-white" icon={<img alt="Filter" src={filtericon} />} />
+                    <Icon className="bg-white" icon={<img alt="Heart" src={heart} />} />
                 </div>
-
             </div>
-            {
-                data?.length > 0 ?
-                    <HotNotSlider data={data} /> : <RefreshScreen />
-            }
 
+            {showSlider ? (
+                <HotNotSlider data={data} />
+            ) : (
+                <RefreshScreen onRefresh={() => setShowSlider(true)} />
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default HotOrNot
+export default HotOrNot;

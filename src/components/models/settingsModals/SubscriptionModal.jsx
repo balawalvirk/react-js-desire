@@ -133,8 +133,8 @@ const VisibleProfiles = ({ data }) => {
               <sub className="line-through text-sm">{i?.subText}</sub>
             </p>
 
-            <div className="absolute lg:top-24 lg:right-5">
-              <div className="size-20 flex items-center justify-center rounded-full bg-primary">
+            <div className="absolute right-5 lg:top-24 lg:right-5">
+              <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary">
                 <p>
                   {i?.percent} <br /> OFF
                 </p>
@@ -194,8 +194,8 @@ const InVisibleProfiles = ({ data }) => {
                 <sub className="line-through text-sm">{i?.subText}</sub>
               </p>
 
-              <div className="absolute lg:top-24 lg:right-5">
-                <div className="size-20 flex items-center justify-center rounded-full bg-primary text-white">
+              <div className="absolute right-5 lg:top-24 lg:right-5">
+                <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary text-white">
                   <p>
                     {i?.percent} <br /> OFF
                   </p>

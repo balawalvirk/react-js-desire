@@ -6,7 +6,7 @@ const Revoke = ({ setSelectedView }) => {
   return (
     <div className="py-1 md:px-6 ">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex  items-center gap-x-3">
+        <div className="flex  items-center gap-x-3 mt-[4px]">
           <div
             className="size-10 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
             onClick={() => {

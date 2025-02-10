@@ -21,29 +21,30 @@ const Stepper = ({ view }) => {
       title: "About Me",
     },
   ];
+
   return (
     <ul className="relative flex justify-between min-w-full ">
       {steps?.map((i, index) => {
         return (
-          <li className={`  group `} key={index}>
+          <li className="group" key={index}>
             <div className="min-w-7 min-h-7 w-full flex items-center justify-center text-xs ">
               <span
                 className={`size-7 flex justify-center items-center shrink-0 ${
-                  view === i?.step ? "bg-primary text-white" : "bg-gray-200"
-                } font-medium  rounded-full `}
+                  view >= i?.step ? "bg-primary text-white" : "bg-gray-200"
+                } font-medium rounded-full `}
               >
                 {i?.step}
               </span>
               <div
-                className={` w-[5.5rem]  md:w-[175px]  h-px  group-last:hidden ${
-                  view === i?.step ? "bg-primary  " : "bg-gray-200"
+                className={`w-[5.5rem] md:w-[175px] h-px group-last:hidden ${
+                  view >= i?.step ? "bg-primary" : "bg-gray-200"
                 }`}
               ></div>
             </div>
             <div className="mt-3">
               <span
-                className={`block   text-[10px] md:text-[12px] font-medium  ${
-                  view === i?.step ? "text-primary " : "text-gray-800"
+                className={`block text-[10px] md:text-[12px] font-medium ${
+                  view === i?.step ? "text-primary" : "text-gray-800"
                 }`}
               >
                 {i?.title}
@@ -55,6 +56,7 @@ const Stepper = ({ view }) => {
     </ul>
   );
 };
+
 const EditProfileModal = ({ isOpen, onClose }) => {
   let [view, setView] = useState(1);
 

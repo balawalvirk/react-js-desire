@@ -1,7 +1,7 @@
 import { CiLocationOn } from "react-icons/ci";
 import { PiPencilSimpleLight } from "react-icons/pi";
 import { RxChevronLeft } from "react-icons/rx";
-import image from "../../../assets/images/image.jpeg";
+import image from "../../../assets/images/profileImage.png";
 import { useState } from "react";
 import { Badge } from "../../../components/badge/Badges";
 import ProfileActionButton from "../../../components/buttons/ProfileActionButton";
@@ -44,7 +44,7 @@ const ProfileInformation = ({ setSelectedView }) => {
         }}
       />
       <div
-        className="mb-2 md:mb-0 size-10 md:size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
+        className="mb-2 mt-2 mx-2 md:mb-0 size-10 md:size-12 border border-[#E8E6EA] rounded-full flex items-center justify-center cursor-pointer"
         onClick={() => {
           navigate(-1);
         }}
@@ -52,7 +52,7 @@ const ProfileInformation = ({ setSelectedView }) => {
         <RxChevronLeft size={30} />
       </div>
       <div className="w-full md:w-1/2 mx-auto">
-        <img src={image} className="aspect-16-9 rounded-2xl mb-5 " alt="" />
+        <img src={image} className="object-cover  rounded-2xl mb-5 " alt="" />
 
         <div className="flex justify-between items-center mb-5">
           <div className="space-y-1">

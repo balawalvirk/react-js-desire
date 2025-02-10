@@ -58,7 +58,7 @@ const LifeStyleModal = ({ isOpen, onClose, selectedItems, onSelect }) => {
                 key={item}
                 className={`rounded-full border text-[14px] border-lightSecondary px-3 py-2 m-1 ${
                   selectedItems[category.title]?.includes(item)
-                    ? "bg-black text-white"
+                    ? "bg-[#272829] shadow-custom text-white"
                     : ""
                 }`}
                 onClick={() => handleSelect(category.title, item)}

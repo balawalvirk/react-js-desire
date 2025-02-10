@@ -70,7 +70,7 @@ const InterestsModal = ({ isOpen, onClose, selectedInterests, onSelect }) => {
                 key={item}
                 className={`rounded-full border text-[14px] border-lightSecondary px-3 py-2 m-1 ${
                   selectedInterests[category.title]?.includes(item)
-                    ? "bg-black text-white shadow-lg"
+                    ? "bg-[#272829] shadow-custom text-white"
                     : ""
                 }`}
                 onClick={() => handleSelect(category.title, item)}

@@ -42,7 +42,7 @@ const MoreInfosModal = ({ isOpen, onClose, selectedItemsInfo, onSelect }) => {
 
   return (
     <StandardModal size="lg" isOpen={isOpen} onClose={onClose}>
-      <div className="flex items-center justify-between mb-4 ">
+      <div className="flex items-center justify-between mb-6 ">
         <p className="text-xl font-bold">More Info</p>
         <button onClick={onClose} className=" text-black">
           <IoMdClose className="h-8 w-8" />
@@ -64,7 +64,7 @@ const MoreInfosModal = ({ isOpen, onClose, selectedItemsInfo, onSelect }) => {
                 key={item}
                 className={`rounded-full border text-[14px] border-lightSecondary px-3 py-2 m-1 ${
                   selectedItemsInfo[category.title]?.includes(item)
-                    ? "bg-black text-white"
+                    ? "bg-[#272829] shadow-custom text-white"
                     : ""
                 }`}
                 onClick={() => handleSelect(category.title, item)}
@@ -77,7 +77,7 @@ const MoreInfosModal = ({ isOpen, onClose, selectedItemsInfo, onSelect }) => {
       ))}
       <Button
         text={"Add"}
-        btnClassName="rounded-full bg-[#C61323] text-white w-full text-center py-3 my-2"
+        btnClassName="rounded-full bg-[#C61323] text-white w-full text-center py-3 my-2 mt-16"
       />
     </StandardModal>
   );

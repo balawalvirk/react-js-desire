@@ -31,7 +31,7 @@ export default function HotNotSlider({ data }) {
   };
 
   return (
-    <div className="flex justify-center items-center h-[80vh]">
+    <div className="flex justify-center items-center h-[80vh] ">
       <Swiper
         effect={"cards"}
         grabCursor={true}
@@ -57,7 +57,7 @@ export default function HotNotSlider({ data }) {
               <img
                 src={item.img}
                 alt={`${item.name}`}
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full object-cover rounded-md aspect-[9/16] max-h-full"
               />
 
               <div

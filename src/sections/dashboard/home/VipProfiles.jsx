@@ -7,7 +7,9 @@ const VipProfiles = () => {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <ProfileHeader title={"VIP Profiles"} />
+        <ProfileHeader
+          title={"VIP Profiles / Gold Profiles / Standard Profiles "}
+        />
         <div className="flex items-center gap-x-2">
           <img src={rotate} alt="" />
           <p className="text-primary cursor-pointer">Load More</p>

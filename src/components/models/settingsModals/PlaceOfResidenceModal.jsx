@@ -11,6 +11,7 @@ import StandardModal from "../StandardModal";
 const mapContainerStyle = {
   width: "100%",
   height: "300px",
+  borderRadius: "12px",
 };
 
 const defaultCenter = {

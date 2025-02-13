@@ -76,10 +76,10 @@ const HotOrNot = () => {
                 <p className="text-lg font-semibold text-[25px]">Hot Or Not</p>
 
                 <div className="flex justify-end gap-x-3 relative mb-12">
-                    <Icon className="bg-white absolute right-16 z-30" handleClick={() => {
+                    <Icon className="bg-white absolute right-16 z-30" icon={<img alt="Search" src={search} />} />
+                    <Icon className="bg-white absolute right-8 z-20" handleClick={() => {
                         setModal(true)
-                    }} icon={<img alt="Search" src={search} />} />
-                    <Icon className="bg-white absolute right-8 z-20" icon={<img alt="Filter" src={filtericon} />} />
+                    }} icon={<img alt="Filter" src={filtericon} />} />
                     <Icon className="bg-white absolute " icon={<img alt="Heart" src={heart} />} />
                 </div>
             </div>

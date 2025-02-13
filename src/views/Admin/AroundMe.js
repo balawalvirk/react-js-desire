@@ -1,17 +1,18 @@
-import { GoogleMap, Marker, useLoadScript, Circle } from "@react-google-maps/api";
-import React, { useState, useEffect } from "react";
+import { Circle, GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import React, { useState } from 'react';
 import filtericon from "../../assets/images/filtericon.png";
+import userImage1 from '../../assets/images/user1.png';
+import userImage2 from '../../assets/images/user2.png';
+import userImage3 from '../../assets/images/user3.png';
 import boostIcon from "../../assets/svgs/search-normal.svg";
 import Icon from "../../components/icons/Icon";
 import PlaceOfResidenceModal from "../../components/models/settingsModals/PlaceOfResidenceModal";
 
-// Define map container style
 const mapContainerStyle = {
   width: "100vw",
   height: "100vh",
 };
 
-// Default center of the map (San Francisco)
 const defaultCenter = {
   lat: 37.7749,
   lng: -122.4194,
@@ -20,44 +21,27 @@ const defaultCenter = {
 const AroundMe = () => {
   const [modal, setModal] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
-  const [isDragging, setIsDragging] = useState(false);
-  const [clickTimeout, setClickTimeout] = useState(null);
-  const [zoom, setZoom] = useState(12); // Initial zoom level
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      position: { lat: 37.7749, lng: -122.4194 },
+      image: userImage1,
+    },
+    {
+      id: 2,
+      position: { lat: 37.7749 + 0.01, lng: -122.4194 + 0.01 },
+      image: userImage2,
+    },
+    {
+      id: 3,
+      position: { lat: 37.7749 - 0.01, lng: -122.4194 - 0.01 },
+      image: userImage3,
+    },
+  ]);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyADMSrJ7cO5UoFG_1PwGU3OHwU4v6Ju7eA",
   });
-
-
-  const handleClick = () => {
-    if (!isDragging) {
-      setModal(true);
-    } else {
-      setClickTimeout(
-        setTimeout(() => {
-          setModal(true);
-        }, 300)
-      );
-    }
-  };
-
-
-  const generateRandomOffset = (location) => {
-    const latOffset = (Math.random() - 0.5) * 0.01;
-    const lngOffset = (Math.random() - 0.5) * 0.01;
-    return {
-      lat: location.lat + latOffset,
-      lng: location.lng + lngOffset,
-    };
-  };
-
-
-  const userAvatars = Array.from({ length: 5 }, () => generateRandomOffset(selectedLocation)); // Change 5 to how many avatars you want
-
-
-  const onZoomChanged = (map) => {
-    setZoom(map.getZoom());
-  };
 
   if (loadError) return <p>Error loading maps</p>;
   if (!isLoaded) return <p>Loading maps...</p>;
@@ -69,51 +53,30 @@ const AroundMe = () => {
         onClose={() => setModal(false)}
         onSelectLocation={setSelectedLocation}
       />
-      <div className="relative">
+      <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
         <GoogleMap
-          key={selectedLocation.lat + selectedLocation.lng}
           mapContainerStyle={mapContainerStyle}
-          zoom={zoom}
           center={selectedLocation}
-
-          options={{
-            mapTypeControl: false,
-            streetViewControl: false,
-            fullscreenControl: false,
-            zoomControl: true,
-            zoomControlOptions: { position: window.google.maps.ControlPosition.RIGHT_BOTTOM },
-            draggable: true,
-          }}
+          zoom={12}
         >
-
           <Marker position={selectedLocation} />
-
-
           <Circle
             center={selectedLocation}
-            radius={zoom * 20}
+            radius={500}
             options={{
-              fillColor: "gray",
-              fillOpacity: 0.3,
-              strokeColor: "gray",
-              strokeOpacity: 0.5,
-              strokeWeight: 1,
+              fillColor: 'rgba(255, 0, 0, 0.1)',
+              strokeColor: 'rgba(255, 0, 0, 0.5)',
             }}
           />
-
-
-          {userAvatars.map((avatarLocation, index) => (
+          {users.map((user) => (
             <Marker
-              key={index}
-              position={avatarLocation}
+              key={user.id}
+              position={user.position}
               icon={{
-                url: "https://randomuser.me/api/portraits/men/75.jpg",
-                scaledSize: new window.google.maps.Size(30, 30),
-                anchorPoint: new window.google.maps.Point(15, 15),
-                shape: {
-                  type: "circle",
-                  coord: [10, 20, 30, 30]
-                }
+                url: user?.image,
+                scaledSize: new window.google.maps.Size(60, 60),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(25, 25),
               }}
             />
           ))}
@@ -123,7 +86,7 @@ const AroundMe = () => {
           <p className="text-black font-bold">Around Me</p>
           <div className="flex mx-5">
             <Icon className={"bg-white"} icon={<img alt="" src={boostIcon} />} />
-            <Icon className={"bg-white"} icon={<img alt="" src={filtericon} onClick={handleClick} />} />
+            <Icon className={"bg-white"} icon={<img alt="" src={filtericon} onClick={() => setModal(false)} />} />
           </div>
         </div>
       </div>

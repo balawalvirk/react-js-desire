@@ -52,7 +52,11 @@ const ProfileInformation = ({ setSelectedView }) => {
         <RxChevronLeft size={30} />
       </div>
       <div className="w-full md:w-1/2 mx-auto">
-        <img src={image} className="object-cover  rounded-2xl mb-5 " alt="" />
+        <img
+          src={image}
+          className="object-cover w-[235px]  rounded-2xl mb-5 "
+          alt=""
+        />
 
         <div className="flex justify-between items-center mb-5">
           <div className="space-y-1">

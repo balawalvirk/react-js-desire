@@ -119,40 +119,81 @@ const VisibleProfiles = ({ data }) => {
   };
 
   return (
-    <Slider {...settings}>
-      {data?.map((i, index) => (
-        <div key={index} className="p-4">
-          <div
-            style={{ backgroundColor: i?.color }}
-            className="text-white p-4 rounded-2xl mb-5 relative"
-          >
-            <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
-            <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
-            <p className="text-sm lg:text-[20px] font-bold">
-              {i?.coins}{" "}
-              <sub className="line-through text-sm">{i?.subText}</sub>
-            </p>
+    <>
+      <h4 className="font-bold">Monthly Subscription</h4>
+      <Slider {...settings}>
+        {data?.map((i, index) => (
+          <div key={index} className="p-4">
+            <div
+              style={{ backgroundColor: i?.color }}
+              className="text-white p-4 rounded-2xl mb-5 relative"
+            >
+              <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
+              <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
+              <p className="text-sm lg:text-[20px] font-bold">
+                {i?.coins}{" "}
+                <sub className="line-through text-sm">{i?.subText}</sub>
+              </p>
 
-            <div className="absolute right-5 lg:top-24 lg:right-5">
-              <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary">
-                <p>
-                  {i?.percent} <br /> OFF
-                </p>
+              <div className="absolute right-5 lg:top-24 lg:right-5">
+                <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary">
+                  <p>
+                    {i?.percent} <br /> OFF
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-12 mb-2 space-y-2 relative">
-            {i?.features.map((feature, index) => (
-              <div className="flex justify-between text-sm" key={index}>
-                <p>{feature}</p>
-                <FaCheckCircle color="#13C634" />
-              </div>
-            ))}
+            <div className="mt-12 mb-2 space-y-2 relative">
+              {i?.features.map((feature, index) => (
+                <div className="flex justify-between text-sm" key={index}>
+                  <p>{feature}</p>
+                  <FaCheckCircle color="#13C634" />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </Slider>
+      <SwipeToPayButton />
+      <h4 className="font-bold">Weely Subscription</h4>
+
+      <Slider {...settings}>
+        {data?.map((i, index) => (
+          <div key={index} className="p-4">
+            <div
+              style={{ backgroundColor: i?.color }}
+              className="text-white p-4 rounded-2xl mb-5 relative"
+            >
+              <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
+              <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
+              <p className="text-sm lg:text-[20px] font-bold">
+                {i?.coins}{" "}
+                <sub className="line-through text-sm">{i?.subText}</sub>
+              </p>
+
+              <div className="absolute right-5 lg:top-24 lg:right-5">
+                <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary">
+                  <p>
+                    {i?.percent} <br /> OFF
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 mb-2 space-y-2 relative">
+              {i?.features.map((feature, index) => (
+                <div className="flex justify-between text-sm" key={index}>
+                  <p>{feature}</p>
+                  <FaCheckCircle color="#13C634" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </Slider>
+      <SwipeToPayButton />
+    </>
   );
 };
 const InVisibleProfiles = ({ data }) => {
@@ -178,6 +219,7 @@ const InVisibleProfiles = ({ data }) => {
 
   return (
     <>
+      <h4 className="font-bold">Monthly Subscription</h4>
       <Slider {...settings}>
         {data?.map((i, index) => (
           <div key={index} className="p-4">
@@ -214,6 +256,45 @@ const InVisibleProfiles = ({ data }) => {
           </div>
         ))}
       </Slider>
+      <SwipeToPayButton />
+      <h4 className="font-bold">Weely Subscription</h4>
+      <Slider {...settings}>
+        {data?.map((i, index) => (
+          <div key={index} className="p-4">
+            <div
+              style={{ backgroundColor: i?.color }}
+              className={` ${
+                index === 0 ? "text-[#272829]" : "text-white"
+              } p-4 rounded-2xl mb-5 relative`}
+            >
+              <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
+              <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
+              <p className="text-sm lg:text-[20px] font-bold">
+                {i?.coins}{" "}
+                <sub className="line-through text-sm">{i?.subText}</sub>
+              </p>
+
+              <div className="absolute right-5 lg:top-24 lg:right-5">
+                <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary text-white">
+                  <p>
+                    {i?.percent} <br /> OFF
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 mb-0 space-y-2 relative">
+              {i?.features.map((feature, index) => (
+                <div className="flex justify-between text-sm" key={index}>
+                  <p>{feature}</p>
+                  <FaCheckCircle color="#13C634" />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </Slider>
+      <SwipeToPayButton />
     </>
   );
 };
@@ -260,7 +341,6 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
           ) : (
             <InVisibleProfiles data={InVisibleProfilesData} />
           )}
-          <SwipeToPayButton />
         </div>
       </div>
     </StandardModal>

@@ -22,7 +22,7 @@ const defaultCenter = {
 const PlaceOfResidenceModal = ({ isOpen, onClose, onSelectLocation }) => {
   const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyADMSrJ7cO5UoFG_1PwGU3OHwU4v6Ju7eA",
+    googleMapsApiKey: "AIzaSyCE8oZ_Ri2mRNj4fklauAOEzzFGp-d8Nis",
     libraries: ["places"],
   });
 
@@ -36,7 +36,7 @@ const PlaceOfResidenceModal = ({ isOpen, onClose, onSelectLocation }) => {
         lng: place.geometry.location.lng(),
       };
       setSelectedLocation(newLocation);
-      onSelectLocation(newLocation); // Pass new location to AroundMe
+      onSelectLocation(newLocation);
     }
   };
 

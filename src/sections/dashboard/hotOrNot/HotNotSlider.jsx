@@ -57,7 +57,7 @@ export default function HotNotSlider({ data }) {
               <img
                 src={item.img}
                 alt={`${item.name}`}
-                className="w-full h-full object-cover rounded-md aspect-[9/16] max-h-full"
+                className="aspect-[9/16] object-cover rounded-md w-full max-h-full"
               />
 
               <div

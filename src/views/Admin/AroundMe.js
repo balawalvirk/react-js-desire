@@ -1,50 +1,46 @@
-import { Circle, GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import React, { useState } from 'react';
+import { GoogleApiWrapper, Map, Marker, Circle } from "google-maps-react";
+import React, { useState, useEffect } from "react";
+import PlaceOfResidenceModal from "../../components/models/settingsModals/PlaceOfResidenceModal";
+import boostIcon from "../../assets/svgs/search-normal.svg";
+import Icon from "../../components/icons/Icon";
 import filtericon from "../../assets/images/filtericon.png";
 import userImage1 from '../../assets/images/user1.png';
 import userImage2 from '../../assets/images/user2.png';
 import userImage3 from '../../assets/images/user3.png';
-import boostIcon from "../../assets/svgs/search-normal.svg";
-import Icon from "../../components/icons/Icon";
-import PlaceOfResidenceModal from "../../components/models/settingsModals/PlaceOfResidenceModal";
-
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
-};
 
 const defaultCenter = {
-  lat: 37.7749,
+  lat: 37.8000,
   lng: -122.4194,
 };
 
-const AroundMe = () => {
+const AroundMe = (props) => {
   const [modal, setModal] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
   const [users, setUsers] = useState([
     {
       id: 1,
-      position: { lat: 37.7749, lng: -122.4194 },
+      position: { lat: 37.7749, lng: -122.194 },
       image: userImage1,
     },
     {
       id: 2,
-      position: { lat: 37.7749 + 0.01, lng: -122.4194 + 0.01 },
+      position: { lat: 37.7749 + 0.21, lng: -122.4194 + 0.11 },
       image: userImage2,
     },
     {
       id: 3,
-      position: { lat: 37.7749 - 0.01, lng: -122.4194 - 0.01 },
+      position: { lat: 37.7999 - 0.21, lng: -122.4194 - 0.01 },
       image: userImage3,
     },
   ]);
+  const [zoomLevel, setZoomLevel] = useState(10);
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyADMSrJ7cO5UoFG_1PwGU3OHwU4v6Ju7eA",
-  });
+  useEffect(() => {
+    const radius = zoomLevel > 12 ? 5000 : zoomLevel * 1000;
+    setRadius(radius);
+  }, [zoomLevel]);
 
-  if (loadError) return <p>Error loading maps</p>;
-  if (!isLoaded) return <p>Loading maps...</p>;
+  const [radius, setRadius] = useState(4000);
 
   return (
     <>
@@ -53,45 +49,58 @@ const AroundMe = () => {
         onClose={() => setModal(false)}
         onSelectLocation={setSelectedLocation}
       />
-      <div style={{ position: "relative", height: "100vh", width: "100vw" }}>
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
+
+      <div className="">
+        <Map
+          className="mainMap relative"
+          google={props.google}
+          zoom={zoomLevel}
+          initialCenter={selectedLocation}
           center={selectedLocation}
-          zoom={12}
+          mapTypeControl={false}
+
+        // onZoomChanged={() => {
+        //   const zoom = props.google.maps.Map.getZoom();
+        //   setZoomLevel(zoom);
+        // }}
         >
           <Marker position={selectedLocation} />
           <Circle
             center={selectedLocation}
-            radius={500}
-            options={{
-              fillColor: 'rgba(255, 0, 0, 0.1)',
-              strokeColor: 'rgba(255, 0, 0, 0.5)',
-            }}
+            radius={radius}
+            strokeColor="#000000"
+            strokeOpacity={0.5}
+            strokeWeight={0}
+            fillColor="#272829"
+            fillOpacity={0.2}
+            animated={true}
           />
-          {users.map((user) => (
-            <Marker
-              key={user.id}
-              position={user.position}
-              icon={{
-                url: user?.image,
-                scaledSize: new window.google.maps.Size(60, 60),
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(25, 25),
-              }}
-            />
-          ))}
-        </GoogleMap>
-
-        <div className="absolute top-5 left-5 flex items-center justify-between w-full px-5 pointer-events-auto">
-          <p className="text-black font-bold">Around Me</p>
-          <div className="flex mx-5">
-            <Icon className={"bg-white"} icon={<img alt="" src={boostIcon} />} />
-            <Icon className={"bg-white"} icon={<img alt="" src={filtericon} onClick={() => setModal(false)} />} />
+          {users && users.length > 0 &&
+            users.map((user) => (
+              <Marker
+                key={user?.id}
+                position={user?.position}
+                icon={{
+                  url: user?.image,
+                  scaledSize: new window.google.maps.Size(150, 150),
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(25, 25),
+                }}
+              />
+            ))}
+          <div className="absolute top-5 left-5 flex items-center justify-between w-full px-5 pointer-events-auto">
+            <p className="text-black font-bold">Around Me</p>
+            <div className="flex mx-5">
+              <Icon className={"bg-white"} icon={<img alt="" src={boostIcon} />} />
+              <Icon className={"bg-white"} icon={<img alt="" src={filtericon} onClick={() => setModal(true)} />} />
+            </div>
           </div>
-        </div>
+        </Map>
       </div>
     </>
   );
 };
 
-export default AroundMe;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyCE8oZ_Ri2mRNj4fklauAOEzzFGp-d8Nis",
+})(AroundMe)

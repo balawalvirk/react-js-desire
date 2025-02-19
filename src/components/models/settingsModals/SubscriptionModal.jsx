@@ -6,6 +6,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import TouchableOpacity from "../../TouchableOpacity";
 
 const visibleProfiles = [
   {
@@ -120,7 +121,6 @@ const VisibleProfiles = ({ data }) => {
 
   return (
     <>
-      <h4 className="font-bold">Monthly Subscription</h4>
       <Slider {...settings}>
         {data?.map((i, index) => (
           <div key={index} className="p-4">
@@ -130,49 +130,32 @@ const VisibleProfiles = ({ data }) => {
             >
               <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
               <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
-              <p className="text-sm lg:text-[20px] font-bold">
-                {i?.coins}{" "}
-                <sub className="line-through text-sm">{i?.subText}</sub>
-              </p>
-
-              <div className="absolute right-5 lg:top-24 lg:right-5">
-                <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary">
-                  <p>
-                    {i?.percent} <br /> OFF
-                  </p>
-                </div>
+              <div className="flex justify-around gap-x-8 ">
+                <TouchableOpacity
+                  className={"p-3 md:p-8 rounded-lg  shadow-xl border"}
+                  backgroundColor={i?.color}
+                >
+                  <div className="flex flex-col">
+                    <p className="font-bold">Weekly</p>
+                    <p className="text-normal">45 €/week</p>
+                  </div>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  className={"p-3 md:p-8 rounded-lg  shadow-xl border"}
+                  backgroundColor={i?.color}
+                >
+                  <div className="flex flex-col">
+                    <p className="font-bold">Monthly</p>
+                    <p className="text-normal">45 €/week</p>
+                  </div>
+                </TouchableOpacity>
               </div>
-            </div>
-
-            <div className="mt-12 mb-2 space-y-2 relative">
-              {i?.features.map((feature, index) => (
-                <div className="flex justify-between text-sm" key={index}>
-                  <p>{feature}</p>
-                  <FaCheckCircle color="#13C634" />
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </Slider>
-      <SwipeToPayButton />
-      <h4 className="font-bold">Weely Subscription</h4>
-
-      <Slider {...settings}>
-        {data?.map((i, index) => (
-          <div key={index} className="p-4">
-            <div
-              style={{ backgroundColor: i?.color }}
-              className="text-white p-4 rounded-2xl mb-5 relative"
-            >
-              <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
-              <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
-              <p className="text-sm lg:text-[20px] font-bold">
+              <p className="text-sm lg:text-[20px] font-bold mt-4">
                 {i?.coins}{" "}
                 <sub className="line-through text-sm">{i?.subText}</sub>
               </p>
 
-              <div className="absolute right-5 lg:top-24 lg:right-5">
+              <div className="absolute right-5 lg:top-52 lg:right-5">
                 <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary">
                   <p>
                     {i?.percent} <br /> OFF
@@ -219,7 +202,6 @@ const InVisibleProfiles = ({ data }) => {
 
   return (
     <>
-      <h4 className="font-bold">Monthly Subscription</h4>
       <Slider {...settings}>
         {data?.map((i, index) => (
           <div key={index} className="p-4">
@@ -231,50 +213,32 @@ const InVisibleProfiles = ({ data }) => {
             >
               <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
               <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
-              <p className="text-sm lg:text-[20px] font-bold">
-                {i?.coins}{" "}
-                <sub className="line-through text-sm">{i?.subText}</sub>
-              </p>
-
-              <div className="absolute right-5 lg:top-24 lg:right-5">
-                <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary text-white">
-                  <p>
-                    {i?.percent} <br /> OFF
-                  </p>
-                </div>
+              <div className="flex justify-around gap-x-8 ">
+                <TouchableOpacity
+                  className={"p-3 md:p-8 rounded-lg  shadow-xl border"}
+                  backgroundColor={i?.color}
+                >
+                  <div className="flex flex-col">
+                    <p className="font-bold">Weekly</p>
+                    <p className="text-normal">45 €/week</p>
+                  </div>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  className={"p-3 md:p-8 rounded-lg  shadow-xl border"}
+                  backgroundColor={i?.color}
+                >
+                  <div className="flex flex-col">
+                    <p className="font-bold">Monthly</p>
+                    <p className="text-normal">45 €/week</p>
+                  </div>
+                </TouchableOpacity>
               </div>
-            </div>
-
-            <div className="mt-12 mb-0 space-y-2 relative">
-              {i?.features.map((feature, index) => (
-                <div className="flex justify-between text-sm" key={index}>
-                  <p>{feature}</p>
-                  <FaCheckCircle color="#13C634" />
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </Slider>
-      <SwipeToPayButton />
-      <h4 className="font-bold">Weely Subscription</h4>
-      <Slider {...settings}>
-        {data?.map((i, index) => (
-          <div key={index} className="p-4">
-            <div
-              style={{ backgroundColor: i?.color }}
-              className={` ${
-                index === 0 ? "text-[#272829]" : "text-white"
-              } p-4 rounded-2xl mb-5 relative`}
-            >
-              <h2 className="text-md lg:text-[20px] font-bold">{i?.title}</h2>
-              <p className="text-xs lg:text-sm mb-6">{i?.description}</p>
-              <p className="text-sm lg:text-[20px] font-bold">
+              <p className="text-sm lg:text-[20px] font-bold mt-3">
                 {i?.coins}{" "}
                 <sub className="line-through text-sm">{i?.subText}</sub>
               </p>
 
-              <div className="absolute right-5 lg:top-24 lg:right-5">
+              <div className="absolute right-5 lg:top-52 lg:right-5">
                 <div className="size-16 md:size-20 flex items-center justify-center rounded-full bg-primary text-white">
                   <p>
                     {i?.percent} <br /> OFF

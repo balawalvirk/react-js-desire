@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import Button from "../../buttons/Button";
@@ -6,7 +6,22 @@ import FormInput from "../../inputs/FormInput";
 import StandardModal from "../StandardModal";
 import BoostPositionModal from "./BoostPositionModal";
 import { TwoThumbInputRange } from "react-two-thumb-input-range";
+import {
+  Autocomplete,
+  GoogleMap,
+  Marker,
+  useLoadScript,
+} from "@react-google-maps/api";
+const mapContainerStyle = {
+  width: "100%",
+  height: "300px",
+  borderRadius: "12px",
+};
 
+const defaultCenter = {
+  lat: 37.7749,
+  lng: -122.4194,
+};
 const SearchFilterModal = ({
   isOpen,
   onClose,
@@ -19,6 +34,28 @@ const SearchFilterModal = ({
   const onValueChange = (values) => {
     setValue(values);
   };
+
+  const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyCE8oZ_Ri2mRNj4fklauAOEzzFGp-d8Nis",
+    libraries: ["places"],
+  });
+
+  const autocompleteRef = useRef(null);
+
+  const handlePlaceSelect = () => {
+    const place = autocompleteRef.current.getPlace();
+    if (place && place.geometry) {
+      const newLocation = {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+      };
+      setSelectedLocation(newLocation);
+    }
+  };
+
+  if (loadError) return <p>Error loading maps</p>;
+  if (!isLoaded) return <p>Loading maps...</p>;
   return (
     <>
       <BoostPositionModal
@@ -82,14 +119,32 @@ const SearchFilterModal = ({
                 showLabels={false}
               />
             </div>
-            <FormInput
-              inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
-              className={"space-y-2"}
-              placeholder={"Chicago USA"}
-              type={"text"}
-              icon={<MdEmail />}
-              label={"Location"}
-            />
+
+            <div className="mb-5">
+              <label className="font-semibold">Location</label>
+              <Autocomplete
+                onLoad={(autocomplete) =>
+                  (autocompleteRef.current = autocomplete)
+                }
+                onPlaceChanged={handlePlaceSelect}
+              >
+                <input
+                  className="w-full rounded-full border border-[#F3F4F9] h-[50px] px-2 md:px-3"
+                  placeholder="Search a location"
+                  type="text"
+                />
+              </Autocomplete>
+            </div>
+
+            <div className="relative">
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                zoom={12}
+                center={selectedLocation}
+              >
+                <Marker position={selectedLocation} />
+              </GoogleMap>
+            </div>
             <Button
               text={"Apply Filter"}
               btnClassName={

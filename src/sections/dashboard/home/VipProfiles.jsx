@@ -1,21 +1,15 @@
 import React from "react";
 import { profiles } from "../../../DummyData";
-import { UserProfileCard } from "../../../components/card/Cards";
 import rotate from "../../../assets/svgs/rotate.svg";
-import ProfileHeader from "./ProfileHeader";
+import { UserProfileCard } from "../../../components/card/Cards";
 const VipProfiles = () => {
   return (
     <div>
-      <div className="flex items-center justify-between">
-        <ProfileHeader
-          title={"VIP Profiles / Gold Profiles / Standard Profiles "}
-        />
-        <div className="flex items-center gap-x-2">
-          <img src={rotate} alt="" />
-          <p className="text-primary cursor-pointer">Load More</p>
-        </div>
+      <div className="flex justify-end items-center my-5 gap-x-3 mx-10">
+        <img src={rotate} alt="" />
+        <p className="text-primary cursor-pointer">Load More</p>
       </div>
-      <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-x-3 ">
+      <div className="grid sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
         {profiles
           ?.filter((i) => i?.type === "vip")
           .map((i, index) => (

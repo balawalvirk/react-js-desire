@@ -221,8 +221,12 @@ const UserProfileCard = ({
   type,
 }) => {
   return (
-    <div className="relative rounded-xl overflow-hidden border-2 border-primary mb-5">
-      <img src={img} alt="" className="w-full h-[350px] object-cover" />
+    <div className=" w-full md:w-[210px] h-auto md:h-[296px] relative rounded-[16px]  overflow-hidden border-2 border-primary mb-5">
+      <img
+        src={img}
+        alt=""
+        className="w-full h-full aspect-[9/16] object-cover"
+      />
       {type === "standard" ? (
         ""
       ) : (

@@ -4,7 +4,13 @@ import { RxChevronLeft } from "react-icons/rx";
 import Button from "../../components/buttons/Button";
 import FormInput from "../../components/inputs/FormInput";
 import emailSvg from "../../assets/svgs/email.svg";
-const ForgetPassword = ({ setTab }) => {
+const ForgetPassword = ({
+  setTab,
+  forgetData,
+  setForgetData,
+  handleForget,
+  loading,
+}) => {
   return (
     <div>
       <div>
@@ -29,16 +35,24 @@ const ForgetPassword = ({ setTab }) => {
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"dean@dexxire.co |"}
-              type={"text"}
+              type={"email"}
               icon={<img src={emailSvg} />}
+              value={forgetData?.email}
+              handleChange={(e) => {
+                setForgetData({
+                  ...forgetData,
+                  email: e.target.value,
+                });
+              }}
             />
           </div>
 
           <Button
-            text={"Reset Password"}
+            text={loading ? "...Wait" : "Reset Password"}
             btnClassName={
               "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-4"
             }
+            handleClick={handleForget}
           />
           <div className="flex justify-center ">
             <p

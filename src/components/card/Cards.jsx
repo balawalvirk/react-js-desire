@@ -251,7 +251,7 @@ const SettingsTabCard = ({ data, icon, name, handleClick }) => {
   return (
     <>
       <div
-        className="flex justify-between text-[#272829] py-3 lg:py-6 "
+        className="flex justify-between text-[#272829] py-3 lg:py-6 cursor-pointer"
         onClick={() => {
           handleClick(data);
         }}

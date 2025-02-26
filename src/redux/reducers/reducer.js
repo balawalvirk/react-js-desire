@@ -1,6 +1,6 @@
 const initialValue = {
-    isLoggedIn: false,
-    role: 'admin'
+    rememberMe: false,
+    user: null
 };
 
 const reducerData = (state = initialValue, action) => {
@@ -8,13 +8,14 @@ const reducerData = (state = initialValue, action) => {
         case "LOGIN": {
             return {
                 ...state,
-                isLoggedIn: action.payload,
+                rememberMe: action.payload,
             };
         }
-        case "ROLE": {
+
+        case "SET_USER": {
             return {
                 ...state,
-                role: action.payload,
+                user: action.payload,
             };
         }
 

@@ -8,7 +8,9 @@ import ProfileActionButton from "../../../components/buttons/ProfileActionButton
 import VerifyProfileModal from "../../../components/models/settingsModals/VerifyProfileModal";
 import EditProfileModal from "../../../components/models/settingsModals/EditProfileModal";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const ProfileInformation = ({ setSelectedView }) => {
+  const user = useSelector((state) => state.user);
   const [modal, setModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const navigate = useNavigate();
@@ -60,7 +62,9 @@ const ProfileInformation = ({ setSelectedView }) => {
 
         <div className="flex justify-between items-center mb-5">
           <div className="space-y-1">
-            <p className="text-3xl font-semibold">Ethan Blake, 25</p>
+            <p className="text-3xl font-semibold">
+              {user?.username ?? "Ethan Blake, 25"}
+            </p>
             <p className="text-sm text-[#9EA1AE]">Professional Actor</p>
           </div>
           <div>
@@ -78,7 +82,8 @@ const ProfileInformation = ({ setSelectedView }) => {
           <div className="space-y-1">
             <p className="text-[18px] font-semibold">Location</p>
             <p className="text-sm text-[#9EA1AE]">
-              2177 Marigold Lane, United States
+              {user?.placeOfResidence?.formatted_address ??
+                "  2177 Marigold Lane, United States"}
             </p>
           </div>
 

@@ -1,14 +1,23 @@
-import React from "react";
+import { FaEye } from "react-icons/fa";
+import email from "../../assets/svgs/email.svg";
+import hide from "../../assets/svgs/Hide.svg";
+import show from "../../assets/images/show.png";
 import Button from "../../components/buttons/Button";
 import Checkbox from "../../components/inputs/Checkbox";
 import FormInput from "../../components/inputs/FormInput";
 import SocialIcon from "../../components/SocialIcon";
-import { userLogin } from "../../redux/actions";
-import email from "../../assets/svgs/email.svg";
-import hide from "../../assets/svgs/Hide.svg";
-import { useNavigate } from "react-router-dom";
-const LoginForm = ({ setTab, dispatch }) => {
-  const navigate = useNavigate();
+import { useDispatch } from "react-redux";
+import { userRemember } from "../../redux/actions";
+const LoginForm = ({
+  setTab,
+  loading,
+  handleLogin,
+  loginData,
+  setLoginData,
+  isPasswordVisible,
+  handlePasswordVisibilityToggle,
+}) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="mt-4 lg:mt-10">
@@ -27,16 +36,41 @@ const LoginForm = ({ setTab, dispatch }) => {
               placeholder={"dean@dexxire.co |"}
               type={"text"}
               icon={<img src={email} />}
+              value={loginData.email}
+              handleChange={(e) =>
+                setLoginData({
+                  ...loginData,
+                  email: e.target.value,
+                })
+              }
             />
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"Enter Password"}
-              type={"text"}
-              icon={<img src={hide} />}
+              type={isPasswordVisible ? "text" : "password"}
+              icon={
+                <img
+                  src={isPasswordVisible ? hide : show}
+                  onClick={handlePasswordVisibilityToggle}
+                  alt="toggle visibility"
+                  style={{ cursor: "pointer" }}
+                  className="size-6"
+                />
+              }
+              value={loginData.password}
+              handleChange={(e) =>
+                setLoginData({
+                  ...loginData,
+                  password: e.target.value,
+                })
+              }
             />
           </div>
           <div className="flex items-center justify-between ">
-            <Checkbox label={"Remember me"} />
+            <Checkbox
+              label={"Remember me"}
+              handleChange={(e) => dispatch(userRemember(e.target.checked))}
+            />
             <p
               className="text-red-500 text-xs lg:text-[14px] cursor-pointer"
               onClick={() => {
@@ -48,13 +82,12 @@ const LoginForm = ({ setTab, dispatch }) => {
           </div>
 
           <Button
-            text={"Login"}
+            text={loading ? "...Wait " : "Login"}
             btnClassName={
               "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-8"
             }
             handleClick={() => {
-              dispatch(userLogin(true));
-              navigate("/");
+              handleLogin();
             }}
           />
 

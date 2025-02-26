@@ -1,4 +1,5 @@
 
+import { signUp } from "./firebase/Config";
 import AroundMe from "./views/Admin/AroundMe";
 import BlockedUsers from "./views/Admin/BlockedUsers";
 import Chat from "./views/Admin/Chat";
@@ -77,6 +78,7 @@ export const routes = {
     authRoutes: [
         { path: "/auth/account", component: Login },
         { path: "/auth/reset-password", component: PasswordReset },
+
 
     ],
 };

@@ -1,12 +1,13 @@
-export const userLogin = (payload) => {
+export const userRemember = (payload) => {
     return {
         type: "LOGIN",
         payload: payload,
     };
 };
-export const userRole = (payload) => {
+
+export const setUser = (data) => {
     return {
-        type: "ROLE",
-        payload: payload,
-    };
-};
+        type: 'SET_USER',
+        payload: data
+    }
+}

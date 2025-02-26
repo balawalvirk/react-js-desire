@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import { FaCalendar, FaUser } from "react-icons/fa";
+import React, { useRef, useState } from "react";
 import { RxChevronLeft } from "react-icons/rx";
 import "react-international-phone/style.css";
-import male from "../../assets/svgs/male.svg";
 import female from "../../assets/svgs/female.svg";
-import transgender from "../../assets/svgs/transgender.svg";
-import maleWhite from "../../assets/svgs/maleWhite.svg";
 import femaleWhite from "../../assets/svgs/femaleWhite.svg";
+import male from "../../assets/svgs/male.svg";
+import maleWhite from "../../assets/svgs/maleWhite.svg";
+import transgender from "../../assets/svgs/transgender.svg";
 import user from "../../assets/svgs/user.svg";
-import calendar from "../../assets/svgs/calendar.svg";
 import Button from "../../components/buttons/Button";
 import FormInput from "../../components/inputs/FormInput";
+import { Autocomplete } from "@react-google-maps/api";
 const category = [
   {
     gender: "Male",
@@ -27,9 +26,44 @@ const category = [
     icon1: <img src={transgender} />,
   },
 ];
-const PersonalInformation = ({ setTab }) => {
+
+const defaultCenter = {
+  lat: 37.7749,
+  lng: -122.4194,
+};
+const PersonalInformation = ({ setTab, userData, setUserData }) => {
   const [selectedGender, setSelectedGender] = useState("Male");
   const [genderToSearch, setGenderToSearch] = useState("Female");
+
+  const PersonalUserData = () => {
+    setUserData({
+      ...userData,
+      genderToSearch: genderToSearch,
+      selectedGender: selectedGender,
+    });
+
+    setTab("uploadImages");
+  };
+
+  const [selectedLocation, setSelectedLocation] = useState(defaultCenter);
+
+  const autocompleteRef = useRef(null);
+
+  const handlePlaceSelect = () => {
+    const place = autocompleteRef.current.getPlace();
+    if (place && place.geometry) {
+      const newLocation = {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+        formatted_address: place?.formatted_address,
+      };
+      setSelectedLocation(newLocation);
+      setUserData({
+        ...userData,
+        placeOfResidence: newLocation,
+      });
+    }
+  };
   return (
     <div>
       <div>
@@ -53,12 +87,26 @@ const PersonalInformation = ({ setTab }) => {
               placeholder={"username"}
               type={"text"}
               icon={<img src={user} />}
+              value={userData.username}
+              handleChange={(e) => {
+                setUserData({
+                  ...userData,
+                  username: e.target.value,
+                });
+              }}
             />
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"13 jan 2021"}
-              type={"text"}
-              icon={<img src={calendar} />}
+              type={"date"}
+              // icon={<img src={calendar} />}
+              value={userData.dob}
+              handleChange={(e) => {
+                setUserData({
+                  ...userData,
+                  dob: e.target.value,
+                });
+              }}
             />
           </div>
           <div className="mb-3 space-y-3">
@@ -114,13 +162,21 @@ const PersonalInformation = ({ setTab }) => {
             </div>
           </div>
           <div className="mt-4">
-            <FormInput
-              inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
-              placeholder={"Enter Residence"}
-              label={"Place of Residence"}
-              type={"text"}
-              labelClassName={"font-medium"}
-            />
+            <label htmlFor="" className="font-medium">
+              Place of Residence
+            </label>
+            <Autocomplete
+              onLoad={(autocomplete) =>
+                (autocompleteRef.current = autocomplete)
+              }
+              onPlaceChanged={handlePlaceSelect}
+            >
+              <input
+                className="w-full rounded-full border border-[#F3F4F9] h-[50px] px-2 md:px-3"
+                placeholder="Search a location"
+                type="text"
+              />
+            </Autocomplete>
           </div>
 
           <Button
@@ -128,7 +184,7 @@ const PersonalInformation = ({ setTab }) => {
             btnClassName={
               "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-8"
             }
-            handleClick={() => setTab("uploadImages")}
+            handleClick={PersonalUserData}
           />
         </div>
       </div>

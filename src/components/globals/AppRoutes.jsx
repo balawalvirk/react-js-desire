@@ -6,23 +6,23 @@ import AuthLayout from "../../layouts/AuthLayout";
 import { routes } from "../../routes";
 
 const AppRoutes = () => {
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  const user = useSelector((state) => state.user);
   const location = useLocation();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!user?._id) {
       navigate("/auth/account");
     }
-    if (!isLoggedIn && location.pathname === "/") {
+    if (!user?._id && location.pathname === "/") {
       navigate("/auth/account");
     }
-  }, [isLoggedIn]);
+  }, [user]);
 
   return (
     <>
-      {isLoggedIn ? (
+      {user?._id ? (
         <AdminLayout routes={routes?.adminRoutes} />
       ) : (
         <AuthLayout routes={routes.authRoutes} />

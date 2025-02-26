@@ -1,26 +1,37 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import profile from "../../assets/images/image.jpeg";
 import { SettingsTabCard } from "../../components/card/Cards";
-import { settingTabs } from "../../utils/utils";
+import AppSettingsModal from "../../components/models/settingsModals/AppSettingsModal";
+import BuyCoinsModal from "../../components/models/settingsModals/BuyCoinsModal";
+import EditProfileModal from "../../components/models/settingsModals/EditProfileModal";
+import MyCreditModal from "../../components/models/settingsModals/MyCreditModal";
 import MySearchModal from "../../components/models/settingsModals/MySearchModal";
 import PlaceOfResidenceModal from "../../components/models/settingsModals/PlaceOfResidenceModal";
-import BuyCoinsModal from "../../components/models/settingsModals/BuyCoinsModal";
-import PayForCoinModal from "../../components/models/settingsModals/PayForCoinModal";
 import SubscriptionModal from "../../components/models/settingsModals/SubscriptionModal";
 import SupportModal from "../../components/models/settingsModals/SupportModal";
-import MyCreditModal from "../../components/models/settingsModals/MyCreditModal";
-import AppSettingsModal from "../../components/models/settingsModals/AppSettingsModal";
-import EditProfileModal from "../../components/models/settingsModals/EditProfileModal";
+import { logoutUser } from "../../firebase/Config";
+import { setUser } from "../../redux/actions";
+import { settingTabs } from "../../utils/utils";
 
 const Settings = () => {
-
+    const user = useSelector(state => state.user)
     const [screen, setScreen] = useState("");
     const [modal, setModal] = useState(false)
+    const dispatch = useDispatch()
     const handleTabClick = (data) => {
         setScreen(data?.tab)
         setModal(true)
     };
+    const handleLogout = () => {
 
+        logoutUser().then((res) => {
+            if (res) {
+                dispatch(setUser(null));
+            }
+        });
+
+    }
     const renderItem = () => {
         switch (screen) {
             case '1':
@@ -45,7 +56,7 @@ const Settings = () => {
             case '10':
                 return
             case '11':
-                return
+                return handleLogout()
             default:
                 break;
         }
@@ -64,8 +75,8 @@ const Settings = () => {
                 </div>
             </div>
             <div className="text-center mb-5 lg:mb-4 mt-4 lg:mt-6">
-                <p className="text-lg lg:text-xl font-bold text-center">Ethan Blake, 25</p>
-                <p className="text-sm lg:text-normaltext-secondary">2177 Marigold Lane, United States</p>
+                <p className="text-lg lg:text-xl font-bold text-center">{user?.username ?? "Ethan Blake, 25"}</p>
+                <p className="text-sm lg:text-normaltext-secondary">{user?.placeOfResidence?.formatted_address ?? "2177 Marigold Lane, United States"}</p>
             </div>
             <div>
                 {settingTabs?.map((i, index) => {

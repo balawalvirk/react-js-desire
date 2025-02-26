@@ -1,12 +1,19 @@
 import React from "react";
-import FormInput from "../../components/inputs/FormInput";
-import { MdEmail } from "react-icons/md";
-import Checkbox from "../../components/inputs/Checkbox";
-import Button from "../../components/buttons/Button";
-import SocialIcon from "../../components/SocialIcon";
+import { toast } from "react-toastify";
 import email from "../../assets/svgs/email.svg";
 import hide from "../../assets/svgs/Hide.svg";
-const SignUp = ({ setTab }) => {
+import Button from "../../components/buttons/Button";
+import Checkbox from "../../components/inputs/Checkbox";
+import FormInput from "../../components/inputs/FormInput";
+import SocialIcon from "../../components/SocialIcon";
+import show from "../../assets/images/show.png";
+const SignUp = ({
+  setTab,
+  userData,
+  setUserData,
+  isPasswordVisible,
+  handlePasswordVisibilityToggle,
+}) => {
   return (
     <div>
       <div className="mt-4 lg:mt-10">
@@ -23,20 +30,57 @@ const SignUp = ({ setTab }) => {
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"dean@dexxire.co |"}
-              type={"text"}
+              type={"email"}
               icon={<img src={email} />}
+              value={userData.email}
+              handleChange={(e) =>
+                setUserData({
+                  ...userData,
+                  email: e.target.value,
+                })
+              }
             />
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"Enter Password"}
-              type={"text"}
-              icon={<img src={hide} />}
+              type={isPasswordVisible ? "text" : "password"}
+              icon={
+                <img
+                  src={isPasswordVisible ? hide : show}
+                  onClick={handlePasswordVisibilityToggle}
+                  alt="toggle visibility"
+                  style={{ cursor: "pointer" }}
+                  className="size-6"
+                />
+              }
+              value={userData.password}
+              handleChange={(e) =>
+                setUserData({
+                  ...userData,
+                  password: e.target.value,
+                })
+              }
             />
             <FormInput
               inputClassName={"w-full border border-[#F3F4F9] h-[50px]"}
               placeholder={"Re-Enter Password"}
-              type={"text"}
-              icon={<img src={hide} />}
+              type={isPasswordVisible ? "text" : "password"}
+              icon={
+                <img
+                  src={isPasswordVisible ? hide : show}
+                  onClick={handlePasswordVisibilityToggle}
+                  alt="toggle visibility"
+                  style={{ cursor: "pointer" }}
+                  className="size-6"
+                />
+              }
+              value={userData.confirmPassword}
+              handleChange={(e) =>
+                setUserData({
+                  ...userData,
+                  confirmPassword: e.target.value,
+                })
+              }
             />
           </div>
           <div className="flex justify-end ">
@@ -52,7 +96,20 @@ const SignUp = ({ setTab }) => {
 
           <Button
             text={"Create Account"}
-            handleClick={() => setTab("SMSAuth")}
+            handleClick={() => {
+              if (userData?.email === "" || userData?.password === "") {
+                toast.error("Please Provide All Fields To Proceed !");
+                return;
+              }
+              if (userData?.password !== userData?.confirmPassword) {
+                toast.error(
+                  "Password & Confirm Password Must not be Different "
+                );
+                return;
+              }
+
+              setTab("personalInfo");
+            }}
             btnClassName={
               "rounded-full bg-[#C61323] text-white w-full text-center py-3 my-3 lg:my-8 "
             }
